@@ -246,7 +246,7 @@
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="products.html">Prodcts</a>
+                                            <a href="products.html">Prodcts</a> 
                                         </li>
 
                                         <li>
@@ -451,7 +451,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <div class="button-box">
                         <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
-                        <button type="button" class="btn  btn--yes btn-primary">Yes</button>
+                        {{-- <button type="button" class="btn  btn--yes btn-primary">Yes</button> --}}
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn  btn--yes btn-primary">Yes</button>
+                        </form>
                     </div>
                 </div>
             </div>

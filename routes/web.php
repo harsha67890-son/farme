@@ -3,8 +3,14 @@
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Admin\Brand\BrandComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
+use App\Http\Livewire\Admin\Brand\AddBrandComponent;
+use App\Http\Livewire\Admin\Products\ProductComponent;
+use App\Http\Livewire\Admin\Category\CategoryComponent;
+use App\Http\Livewire\Admin\Products\AddProductComponent;
+use App\Http\Livewire\Admin\Category\AddcategoryComponent;
 use App\Http\Livewire\SuperAdmin\SuperAdminDashboardComponent;
 
 /*
@@ -43,6 +49,18 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     
     Route::get('/admin-user',AdminDashboardComponent::class)->name('admin.dashboard');
+
+    //products
+    Route::get('/admin-user/products',ProductComponent::class)->name('admin.product.index');
+    Route::get('/admin-user/add-products',AddProductComponent::class)->name('admin.product.add');
+
+    //category
+    Route::get('/admin-user/category',CategoryComponent::class)->name('admin.category');
+    Route::get('/admin-user/add-category/',AddcategoryComponent::class)->name('admin.category.add');
+
+    //brand
+    Route::get('/admin-user/brand',BrandComponent::class)->name('admin.brand');
+    Route::get('/admin-user/add-brand',AddBrandComponent::class)->name('admin.brand.add');
 });
 
 //For Super Admin

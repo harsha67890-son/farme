@@ -12,7 +12,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <title>Fastkart - Dashboard</title>
+    <title>Farme</title>
     @livewireStyles
 
     <!-- Google font-->
@@ -56,6 +56,7 @@
 </head>
 
 <body>
+    
     <!-- tap on top start -->
     <div class="tap-top">
         <span class="lnr lnr-chevron-up"></span>
@@ -155,7 +156,7 @@
                                     alt="">
                                 <div class="user-name-hide media-body">
                                     <span>Emay Walter</span>
-                                    <p class="mb-0 font-roboto">Admin<i class="middle ri-arrow-down-s-line"></i></p>
+                                    <p class="mb-0 font-roboto">{{ Auth::user()->name }}<i class="middle ri-arrow-down-s-line"></i></p>
                                 </div>
                             </div>
                             <ul class="profile-dropdown onhover-show-div">
@@ -233,7 +234,7 @@
                                 <li class="back-btn"></li>
 
                                 <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="index.html">
+                                    <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.dashboard') }}">
                                         <i class="ri-home-line"></i>
                                         <span>Dashboard</span>
                                     </a>
@@ -246,11 +247,11 @@
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="products.html">Prodcts</a>
+                                            <a href="{{ route('admin.product.index') }}">Prodcts</a>
                                         </li>
 
                                         <li>
-                                            <a href="add-new-product.html">Add New Products</a>
+                                            <a href="{{ route('admin.product.add') }}">Add New Products</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -262,11 +263,11 @@
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="category.html">Category List</a>
+                                            <a href="{{ route('admin.category') }}">Category List</a>
                                         </li>
 
                                         <li>
-                                            <a href="add-new-category.html">Add New Category</a>
+                                            <a href="{{ route('admin.category.add') }}">Add New Category</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -274,15 +275,15 @@
                                 <li class="sidebar-list">
                                     <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
                                         <i class="ri-list-settings-line"></i>
-                                        <span>Attributes</span>
+                                        <span>Brand</span>
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="attributes.html">Attributes</a>
+                                            <a href="{{ route('admin.brand') }}">Brand</a>
                                         </li>
 
                                         <li>
-                                            <a href="add-new-attributes.html">Add Attributes</a>
+                                            <a href="{{ route('admin.brand.add') }}">Add Brand</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -450,8 +451,16 @@
                     <p>Are you sure you want to log out?</p>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <div class="button-box">
+                        
                         <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
-                        <button type="button" class="btn  btn--yes btn-primary">Yes</button>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            {{-- <button class="nav-link" type="submit">
+                                {{ __('Logout') }}
+                            </button> --}}
+                            <button type="submit" class="btn  btn--yes btn-primary">Yes</button>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
