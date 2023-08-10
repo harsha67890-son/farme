@@ -53,6 +53,7 @@
 
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/style.css') }}">
+    @livewireStyles
 </head>
 
 <body>

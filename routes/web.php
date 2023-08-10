@@ -11,6 +11,7 @@ use App\Http\Livewire\Admin\Products\ProductComponent;
 use App\Http\Livewire\Admin\Category\CategoryComponent;
 use App\Http\Livewire\Admin\Products\AddProductComponent;
 use App\Http\Livewire\Admin\Category\AddcategoryComponent;
+use App\Http\Livewire\Admin\Category\EditCategoryComponent;
 use App\Http\Livewire\SuperAdmin\SuperAdminDashboardComponent;
 
 /*
@@ -57,6 +58,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     //category
     Route::get('/admin-user/category',CategoryComponent::class)->name('admin.category');
     Route::get('/admin-user/add-category/',AddcategoryComponent::class)->name('admin.category.add');
+    Route::get('/admin-user/edit-category/{category_slug}',EditCategoryComponent::class)->name('admin.category.edit');
 
     //brand
     Route::get('/admin-user/brand',BrandComponent::class)->name('admin.brand');
