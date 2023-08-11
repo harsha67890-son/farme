@@ -12,7 +12,9 @@ class CategoryComponent extends Component
     {
         $categorys = Category::find($id);
         $categorys->delete();
-        session()->flash('message','Product has been deleted successfully');
+        // dd($categorys);
+        // session()->flash('message','Product has been deleted successfully');
+        return redirect()->route('admin.category'); 
     }
     public function render()
     {
