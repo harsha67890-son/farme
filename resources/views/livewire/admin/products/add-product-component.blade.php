@@ -11,422 +11,180 @@
                             <div class="col-sm-8 m-auto">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="card-header-2">
-                                            <h5>Product Information</h5>
+                                        <div class="title-header option-title">
+                                            <h5>Products Information</h5>
+                                            <form class="d-inline-flex">
+                                                <a href="{{ route('admin.product.index') }}"
+                                                    class="align-items-center btn btn-theme d-flex">
+                                                    <i data-feather="plus-square"></i>List Products
+                                                </a>
+                                            </form>
                                         </div>
+                                        <div class="panel-body">
+                                            @if (Session::has('message'))
+                                                <div class="alert alert-success" role="alert">
+                                                    {{ Session::get('message') }}</div>
+                                            @endif
 
-                                        <form class="theme-form theme-form-2 mega-form">
-                                            <div class="mb-4 row align-items-center">
-                                                <label class="form-label-title col-sm-3 mb-0">Product
-                                                    Name</label>
-                                                <div class="col-sm-9">
-                                                    <input class="form-control" type="text"
-                                                        placeholder="Product Name">
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-4 row align-items-center">
-                                                <label class="col-sm-3 col-form-label form-label-title">Product
-                                                    Type</label>
-                                                <div class="col-sm-9">
-                                                    <select class="js-example-basic-single w-100" name="state">
-                                                        <option disabled>Static Menu</option>
-                                                        <option>Simple</option>
-                                                        <option>Classified</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-4 row align-items-center">
-                                                <label
-                                                    class="col-sm-3 col-form-label form-label-title">Category</label>
-                                                <div class="col-sm-9">
-                                                    <select class="js-example-basic-single w-100" name="state">
-                                                        <option disabled>Category Menu</option>
-                                                        <option>Electronics</option>
-                                                        <option>TV & Appliances</option>
-                                                        <option>Home & Furniture</option>
-                                                        <option>Another</option>
-                                                        <option>Baby & Kids</option>
-                                                        <option>Health, Beauty & Perfumes</option>
-                                                        <option>Uncategorized</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-4 row align-items-center">
-                                                <label
-                                                    class="col-sm-3 col-form-label form-label-title">Subcategory</label>
-                                                <div class="col-sm-9">
-                                                    <select class="js-example-basic-single w-100" name="state">
-                                                        <option disabled>Subcategory Menu</option>
-                                                        <option>Ethnic Wear</option>
-                                                        <option>Ethnic Bottoms</option>
-                                                        <option>Women Western Wear</option>
-                                                        <option>Sandels</option>
-                                                        <option>Shoes</option>
-                                                        <option>Beauty & Grooming</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-4 row align-items-center">
-                                                <label
-                                                    class="col-sm-3 col-form-label form-label-title">Brand</label>
-                                                <div class="col-sm-9">
-                                                    <select class="js-example-basic-single w-100">
-                                                        <option disabled>Brand Menu</option>
-                                                        <option value="puma">Puma</option>
-                                                        <option value="hrx">HRX</option>
-                                                        <option value="roadster">Roadster</option>
-                                                        <option value="zara">Zara</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-4 row align-items-center">
-                                                <label class="col-sm-3 col-form-label form-label-title">Unit</label>
-                                                <div class="col-sm-9">
-                                                    <select class="js-example-basic-single w-100">
-                                                        <option disabled>Unit Menu</option>
-                                                        <option>Kilogram</option>
-                                                        <option>Pieces</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="mb-4 row align-items-center">
-                                                <label class="col-sm-3 col-form-label form-label-title">Tags</label>
-                                                <div class="col-sm-9">
-                                                    <div class="bs-example">
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Type tag & hit enter" id="#inputTag"
-                                                            data-role="tagsinput">
+                                            <form class="theme-form theme-form-2 mega-form"
+                                                wire:submit.prevent='addProduct'>
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="form-label-title col-sm-3 mb-0">Product
+                                                        Name</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" type="text"
+                                                            placeholder="Product Name" wire:model='name'
+                                                            wire:keyup='generateSlug'>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="mb-4 row align-items-center">
-                                                <label
-                                                    class="col-sm-3 col-form-label form-label-title">Exchangeable</label>
-                                                <div class="col-sm-9">
-                                                    <label class="switch">
-                                                        <input type="checkbox"><span class="switch-state"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="row align-items-center">
-                                                <label
-                                                    class="col-sm-3 col-form-label form-label-title">Refundable</label>
-                                                <div class="col-sm-9">
-                                                    <label class="switch">
-                                                        <input type="checkbox" checked=""><span
-                                                            class="switch-state"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
 
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-header-2">
-                                            <h5>Description</h5>
-                                        </div>
-
-                                        <form class="theme-form theme-form-2 mega-form">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="row">
-                                                        <label class="form-label-title col-sm-3 mb-0">Product
-                                                            Description</label>
-                                                        <div class="col-sm-9">
-                                                            <div id="editor"></div>
-                                                        </div>
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="form-label-title col-sm-3 mb-0">Product
+                                                        Slug</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" type="text"
+                                                            placeholder="Product Slug" wire:model='slug'>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-header-2">
-                                            <h5>Product Images</h5>
-                                        </div>
-
-                                        <form class="theme-form theme-form-2 mega-form">
-                                            <div class="mb-4 row align-items-center">
-                                                <label
-                                                    class="col-sm-3 col-form-label form-label-title">Images</label>
-                                                <div class="col-sm-9">
-                                                    <input class="form-control form-choose" type="file"
-                                                        id="formFile" multiple>
-                                                </div>
-                                            </div>
-
-                                            <div class="row align-items-center">
-                                                <label class="col-sm-3 col-form-label form-label-title">Thumbnail
-                                                    Image</label>
-                                                <div class="col-sm-9">
-                                                    <input class="form-control form-choose" type="file"
-                                                        id="formFileMultiple1" multiple>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-header-2">
-                                            <h5>Product Videos</h5>
-                                        </div>
-
-                                        <form class="theme-form theme-form-2 mega-form">
-                                            <div class="mb-4 row align-items-center">
-                                                <label class="col-sm-3 col-form-label form-label-title">Video
-                                                    Provider</label>
-                                                <div class="col-sm-9">
-                                                    <select class="js-example-basic-single w-100" name="state">
-                                                        <option>Vimeo</option>
-                                                        <option>Youtube</option>
-                                                        <option>Dailymotion</option>
-                                                        <option>Vimeo</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="row align-items-center">
-                                                <label class="form-label-title col-sm-3 mb-0">Video
-                                                    Link</label>
-                                                <div class="col-sm-9">
-                                                    <input class="form-control" type="text"
-                                                        placeholder="Video Link">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-header-2">
-                                            <h5>Product variations</h5>
-                                        </div>
-
-                                        <form class="theme-form theme-form-2 mega-form">
-                                            <div class="mb-4 row align-items-center">
-                                                <label class="form-label-title col-sm-3 mb-0">Option
-                                                    Name</label>
-                                                <div class="col-sm-9">
-                                                    <select class="js-example-basic-single w-100" name="state">
-                                                        <option>Color</option>
-                                                        <option>Size</option>
-                                                        <option>Material</option>
-                                                        <option>Style</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="row align-items-center">
-                                                <label class="col-sm-3 col-form-label form-label-title">Option
-                                                    Value</label>
-                                                <div class="col-sm-9">
-                                                    <div class="bs-example">
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Type tag & hit enter" id="#inputTag"
-                                                            data-role="tagsinput">
+                                                <div class="mb-4 row align-items-center">
+                                                    <label
+                                                        class="col-sm-3 col-form-label form-label-title">Category</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="js-example-basic-single w-100" name="state"
+                                                            wire:model='category_id'>
+                                                            <option>Category Menu</option>
+                                                            @foreach ($categorys as $item)
+                                                                <option value="{{ $item->id }}">
+                                                                    {{ $item->category_name }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
 
-                                        <a href="#" class="add-option"><i class="ri-add-line me-2"></i> Add Another
-                                            Option</a>
-                                    </div>
-                                </div>
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="col-sm-3 col-form-label form-label-title">Pack
+                                                        Size</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="js-example-basic-single w-100" name="state"
+                                                            wire:model='packsize_id'>
+                                                            <option >Pack SIze</option>
+                                                            @foreach ($packsize as $item)
+                                                                <option value="{{ $item->id }}">
+                                                                    {{ $item->packsize }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
 
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-header-2">
-                                            <h5>Shipping</h5>
+                                                <div class="mb-4 row align-items-center">
+                                                    <label
+                                                        class="col-sm-3 col-form-label form-label-title">Brand</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="js-example-basic-single w-100"
+                                                            wire:model='brand_id'>
+                                                            <option >Brand Menu</option>
+                                                            @foreach ($brands as $item)
+                                                                <option value="{{ $item->id }}">
+                                                                    {{ $item->brand_name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="col-sm-3 form-label-title">MRP</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" type="number" placeholder="0"
+                                                            wire:model='mrp'>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="col-sm-3 form-label-title">Price</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" type="number" placeholder="0"
+                                                            wire:model='price'>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="col-sm-3 form-label-title">Stock</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" type="number" placeholder="0"
+                                                            wire:model='stock'>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="col-sm-3 col-form-label form-label-title">Stock
+                                                        Status</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="js-example-basic-single w-100" name="state"
+                                                            wire:model='stock_status'>
+                                                            <option value="instock"> In Stock</option>
+                                                            <option value="outofstock">Out Of Stock</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="form-label-title col-sm-3 mb-0">Ingredients</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" type="text"
+                                                            placeholder="Ingredients" wire:model='ingredients'>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="form-label-title col-sm-3 mb-0">SKU</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" type="text" placeholder="SKU"
+                                                            wire:model='SKU'>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="form-label-title col-sm-3 mb-0">Short
+                                                        Description</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea name="" id="" cols="78" rows="10" wire:model='short_description'></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="form-label-title col-sm-3 mb-0">Description</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea name="" id="" cols="78" rows="10" wire:model='description'></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4 row align-items-center">
+                                                    <label
+                                                        class="col-sm-3 col-form-label form-label-title">Images</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control form-choose" type="file"
+                                                            id="formFile" wire:model='image'>
+                                                        @if ($image)
+                                                            <img src="{{ $image->temporaryUrl() }}" width="120" />
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="col-sm-3 col-form-label form-label-title">Submit
+                                                        Button</label>
+                                                    <div class="col-sm-9">
+                                                        <button type="submit" class="btn btn-primary">Save</button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
-
-                                        <form class="theme-form theme-form-2 mega-form">
-                                            <div class="mb-4 row align-items-center">
-                                                <label class="form-label-title col-sm-3 mb-0">Weight
-                                                    (kg)</label>
-                                                <div class="col-sm-9">
-                                                    <input class="form-control" type="number" placeholder="Weight">
-                                                </div>
-                                            </div>
-
-                                            <div class="row align-items-center">
-                                                <label class="col-sm-3 col-form-label form-label-title">Dimensions
-                                                    (cm)</label>
-                                                <div class="col-sm-9">
-                                                    <select class="js-example-basic-single w-100" name="state">
-                                                        <option>Length</option>
-                                                        <option>Width</option>
-                                                        <option>Height</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-header-2">
-                                            <h5>Product Price</h5>
-                                        </div>
-
-                                        <form class="theme-form theme-form-2 mega-form">
-                                            <div class="mb-4 row align-items-center">
-                                                <label class="col-sm-3 form-label-title">price</label>
-                                                <div class="col-sm-9">
-                                                    <input class="form-control" type="number" placeholder="0">
-                                                </div>
-                                            </div>
-                                            <div class="mb-4 row align-items-center">
-                                                <label class="col-sm-3 form-label-title">Compare at
-                                                    price</label>
-                                                <div class="col-sm-9">
-                                                    <input class="form-control" type="number" placeholder="0">
-                                                </div>
-                                            </div>
-                                            <div class="mb-4 row align-items-center">
-                                                <label class="col-sm-3 form-label-title">Cost per item</label>
-                                                <div class="col-sm-5">
-                                                    <input class="form-control" type="number" placeholder="0">
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <label>Margin:</label>
-                                                    <span>25%</span>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <label>Profit:</label>
-                                                    <span>$5</span>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-header-2">
-                                            <h5>Product Inventory</h5>
-                                        </div>
-
-                                        <form class="theme-form theme-form-2 mega-form">
-                                            <div class="mb-4 row align-items-center">
-                                                <label class="form-label-title col-sm-3 mb-0">SKU</label>
-                                                <div class="col-sm-9">
-                                                    <input class="form-control" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="mb-4 row align-items-center">
-                                                <label class="col-sm-3 col-form-label form-label-title">Stock
-                                                    Status</label>
-                                                <div class="col-sm-9">
-                                                    <select class="js-example-basic-single w-100" name="state">
-                                                        <option>In Stock</option>
-                                                        <option>Out Of Stock</option>
-                                                        <option>On Backorder</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <table class="table variation-table table-responsive-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Variant</th>
-                                                    <th scope="col">Price</th>
-                                                    <th scope="col">SKU</th>
-                                                    <th scope="col">Quantity</th>
-                                                    <th scope="col"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Red</td>
-                                                    <td>
-                                                        <input class="form-control" type="number" placeholder="0">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control" type="number" placeholder="0">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control" type="number" placeholder="0">
-                                                    </td>
-                                                    <td>
-                                                        <ul class="order-option">
-                                                            <li><a href="javascript:void(0)" data-toggle="modal"
-                                                                    data-target="#deleteModal"><i
-                                                                        class="ri-delete-bin-line"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Blue</td>
-                                                    <td>
-                                                        <input class="form-control" type="number" placeholder="0">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control" type="number" placeholder="0">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control" type="number" placeholder="0">
-                                                    </td>
-                                                    <td>
-                                                        <ul class="order-option">
-                                                            <li><a href="javascript:void(0)" data-toggle="modal"
-                                                                    data-target="#deleteModal"><i
-                                                                        class="ri-delete-bin-line"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-header-2">
-                                            <h5>Link Products</h5>
-                                        </div>
-
-                                        <form class="theme-form theme-form-2 mega-form">
-                                            <div class="mb-4 row align-items-center">
-                                                <label class="form-label-title col-sm-3 mb-0">Upsells</label>
-                                                <div class="col-sm-9">
-                                                    <input class="form-control" type="search">
-                                                </div>
-                                            </div>
-
-                                            <div class="row align-items-center">
-                                                <label class="form-label-title col-sm-3 mb-0">Cross-Sells</label>
-                                                <div class="col-sm-9">
-                                                    <input class="form-control" type="search">
-                                                </div>
-                                            </div>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-           
+            <!-- Container-fluid End -->
         </div>
-        <!-- Container-fluid End -->
+        <!-- Page Body End -->
     </div>
-    <!-- Page Body End -->
-</div>

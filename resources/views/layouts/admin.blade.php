@@ -205,7 +205,7 @@
             <!-- Page Sidebar Start-->
             <div class="sidebar-wrapper">
                 <div id="sidebarEffect"></div>
-                <div>
+                <div> 
                     <div class="logo-wrapper logo-wrapper-center">
                         <a href="index.html" data-bs-original-title="" title="">
                             <img class="img-fluid for-white" src="assets/images/logo/full-white.png" alt="logo">
@@ -252,6 +252,10 @@
                                         </li>
 
                                         <li>
+                                            <a href="{{ route('admin.product.topProduct') }}">Top Prodcts</a>
+                                        </li>
+
+                                        <li>
                                             <a href="{{ route('admin.product.add') }}">Add New Products</a>
                                         </li>
                                     </ul>
@@ -285,6 +289,22 @@
 
                                         <li>
                                             <a href="{{ route('admin.brand.add') }}">Add Brand</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="ri-list-settings-line"></i>
+                                        <span>Pack Size</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="{{ route('admin.packsize') }}">Pack Size</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{ route('admin.packsize.add') }}">Add Pack Size</a>
                                         </li>
                                     </ul>
                                 </li>

@@ -31,6 +31,7 @@ use WithFileUploads;
         $this->image = $category->image; 
         $this->images = explode(",",$category->images);     
     }
+    
     public function generateslug()
     {
         $this->slug = Str::slug($this->category_name);

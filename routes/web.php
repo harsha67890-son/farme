@@ -10,10 +10,17 @@ use App\Http\Livewire\Admin\Brand\AddBrandComponent;
 use App\Http\Livewire\Admin\Brand\EditBrandComponent;
 use App\Http\Livewire\Admin\Products\ProductComponent;
 use App\Http\Livewire\Admin\Category\CategoryComponent;
+use App\Http\Livewire\Admin\Packsize\PackSizeComponent;
 use App\Http\Livewire\Admin\Products\AddProductComponent;
 use App\Http\Livewire\Admin\Category\AddcategoryComponent;
+use App\Http\Livewire\Admin\Packsize\AddPackSizeComponent;
+use App\Http\Livewire\Admin\Products\TopProductsComponent;
+use App\Http\Livewire\Admin\Products\ViewProductComponent;
 use App\Http\Livewire\Admin\Category\EditCategoryComponent;
+use App\Http\Livewire\Admin\Packsize\EditpackSizeComponent;
+use App\Http\Livewire\Admin\Products\EditProductsComponent;
 use App\Http\Livewire\SuperAdmin\SuperAdminDashboardComponent;
+// use App\Http\Livewire\Admin\Packsize\packsizeComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +62,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     //products
     Route::get('/admin-user/products',ProductComponent::class)->name('admin.product.index');
     Route::get('/admin-user/add-products',AddProductComponent::class)->name('admin.product.add');
-
+    Route::get('/admin-user/view-product/{slug}',ViewProductComponent::class)->name('admin.product.viewProduct');
+    Route::get('/admin-user/edit-product/{product_id}',EditProductsComponent::class)->name('admin.product.edit');
+    Route::get('/admin-user/top-product',TopProductsComponent::class)->name('admin.product.topProduct');
     //category
     Route::get('/admin-user/category',CategoryComponent::class)->name('admin.category');
     Route::get('/admin-user/add-category/',AddcategoryComponent::class)->name('admin.category.add');
@@ -65,6 +74,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/admin-user/brand',BrandComponent::class)->name('admin.brand');
     Route::get('/admin-user/add-brand',AddBrandComponent::class)->name('admin.brand.add');
     Route::get('/admin-user/edit-brand/{brand_slug}',EditBrandComponent::class)->name('admin.brand.edit');
+
+    //pack size
+    Route::get('/admin-user/packsize',PackSizeComponent::class)->name('admin.packsize');
+    Route::get('/admin-user/add-packsize',AddPackSizeComponent::class)->name('admin.packsize.add');
+    Route::get('/admin-user/edit-packsize/{packsize_id}',EditpackSizeComponent::class)->name('admin.packsize.edit');
 
 });
 
