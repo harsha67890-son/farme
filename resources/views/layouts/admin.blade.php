@@ -256,6 +256,10 @@
                                         </li>
 
                                         <li>
+                                            <a href="{{ route('admin.product.bestProduct') }}">Best Selling Product</a>
+                                        </li>
+
+                                        <li>
                                             <a href="{{ route('admin.product.add') }}">Add New Products</a>
                                         </li>
                                     </ul>

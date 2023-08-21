@@ -20,6 +20,7 @@ use App\Http\Livewire\Admin\Category\EditCategoryComponent;
 use App\Http\Livewire\Admin\Packsize\EditpackSizeComponent;
 use App\Http\Livewire\Admin\Products\EditProductsComponent;
 use App\Http\Livewire\SuperAdmin\SuperAdminDashboardComponent;
+use App\Http\Livewire\Admin\Products\BestSellingProductComponent;
 // use App\Http\Livewire\Admin\Packsize\packsizeComponent;
 
 /*
@@ -65,6 +66,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/admin-user/view-product/{slug}',ViewProductComponent::class)->name('admin.product.viewProduct');
     Route::get('/admin-user/edit-product/{product_id}',EditProductsComponent::class)->name('admin.product.edit');
     Route::get('/admin-user/top-product',TopProductsComponent::class)->name('admin.product.topProduct');
+    Route::get('/admin-user/best-product',BestSellingProductComponent::class)->name('admin.product.bestProduct');
     //category
     Route::get('/admin-user/category',CategoryComponent::class)->name('admin.category');
     Route::get('/admin-user/add-category/',AddcategoryComponent::class)->name('admin.category.add');

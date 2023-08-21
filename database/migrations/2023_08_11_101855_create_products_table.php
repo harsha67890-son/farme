@@ -30,6 +30,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('brand_id')->unsigned()->nullable();
             $table->bigInteger('packsize_id')->unsigned()->nullable();
             $table->string('top_product')->default(0);
+            $table->string('best_product')->default(0);
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
