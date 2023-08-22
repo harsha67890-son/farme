@@ -1,13 +1,16 @@
 <!-- home section start -->
 <section class="home-section-2 home-section-small section-b-space">
     <div class="container-fluid-lg">
+        @foreach ( $sliders as $slide )
         <div class="row g-4">
             <div class="col-xxl-6 col-md-8">
+                <a href="{{ $slide->slider_link }}">
                 <div class="home-contain h-100">
-                    <img src="{{ asset('/assets/images/veg-3/home/1.png') }}" class="img-fluid bg-img blur-up lazyload"
+                    <img src="{{ asset('/images/slider') }}/{{ $slide->image }}" class="img-fluid bg-img blur-up lazyload"
                         alt="">
                     <div class="home-detail home-width p-center-left position-relative">
                         <div>
+                          
                             <h6 class="ls-expanded theme-color">ORGANIC</h6>
                             <h1 class="fw-bold w-100">100% Fresh</h1>
                             <h3 class="text-content fw-light">Fruit & Vegetables</h3>
@@ -18,14 +21,19 @@
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
 
             <div class="col-xxl-3 col-md-4 ratio_medium d-md-block d-none">
                 <div class="home-contain home-small h-100">
+                    <a href="{{ $slide->slider_link1 }}">
                     <div class="h-100">
-                        <img src="{{ asset('/assets/images/veg-3/home/2.png') }}"
+                       
+                        <img src="{{ asset('/images/slider/a') }}/{{ $slide->image2 }}"
                             class="img-fluid bg-img blur-up lazyload" alt="">
+                    
                     </div>
+                    </a>
                     <div class="home-detail text-center p-top-center w-100 text-white">
                         <div>
                             <h4 class="fw-bold">Fresh & 100% Organic</h4>
@@ -34,6 +42,7 @@
                                 onclick="location.href = 'shop-left-sidebar.html';">Shop Now</button>
                         </div>
                     </div>
+                
                 </div>
             </div>
 
@@ -41,36 +50,39 @@
                 <div class="row g-3">
                     <div class="col-xxl-12 col-sm-6">
                         <div class="home-contain">
-                            <a href="shop-left-sidebar.html">
-                                <img src="{{ asset('/assets/images/veg-3/home/3.png') }}"
+                            <a href="{{ $slide->slider_link2 }}">
+                                <img src="{{ asset('/images/slider/b') }}/{{ $slide->image3 }}"
                                     class="img-fluid bg-img blur-up lazyload" alt="">
-                            </a>
+                        
                             <div class="home-detail text-white p-center text-center">
                                 <div>
                                     <h4 class="text-center">Organic Lifestyle</h4>
                                     <h5 class="text-center">Best Weekend Sales</h5>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
 
                     <div class="col-xxl-12 col-sm-6">
                         <div class="home-contain">
-                            <a href="shop-left-sidebar.html">
-                                <img src="{{ asset('/assets/images/veg-3/home/4.png') }}"
+                            <a href="{{ $slide->slider_link3 }}">
+                                <img src="{{ asset('/images/slider/c') }}/{{ $slide->image4 }}"
                                     class="img-fluid bg-img blur-up lazyload" alt="">
-                            </a>
                             <div class="home-detail text-white w-50 p-center-left home-p-sm">
                                 <div>
                                     <h4 class="fw-bold">Safe food saves lives</h4>
                                     <h5>Discount Offer</h5>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
+        
     </div>
 </section>
 <!-- Home Section End -->

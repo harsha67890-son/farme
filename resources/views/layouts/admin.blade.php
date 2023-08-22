@@ -390,16 +390,32 @@
                                         <span>Coupons</span>
                                     </a>
                                     <ul class="sidebar-submenu">
+
                                         <li>
-                                            <a href="coupon-list.html">Coupon List</a>
+                                            <a href="{{ route('admin.coupen') }}">Coupon List</a>
                                         </li>
 
                                         <li>
-                                            <a href="create-coupon.html">Create Coupon</a>
+                                            <a href="{{ route('admin.coupen.add') }}">Create Coupon</a>
                                         </li>
                                     </ul>
                                 </li>
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="ri-price-tag-3-line"></i>
+                                        <span>Sliders</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
 
+                                        <li>
+                                            <a href="{{ route('admin.slider') }}">Slider List</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{ route('admin.slider.add') }}">Create Slide</a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title link-nav" href="taxes.html">
                                         <i class="ri-price-tag-3-line"></i>

@@ -128,65 +128,147 @@
                                 </div>
                             </div>
 
-                            <div class="rightside-menu">
-                                <div class="dropdown-dollar">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            <span>Language</span> <i class="fa-solid fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li>
-                                                <a id="eng" class="dropdown-item"
-                                                    href="javascript:void(0)">English</a>
-                                            </li>
-                                            <li>
-                                                <a id="hin" class="dropdown-item"
-                                                    href="javascript:void(0)">Hindi</a>
-                                            </li>
-                                            <li>
-                                                <a id="guj" class="dropdown-item"
-                                                    href="javascript:void(0)">Gujarati</a>
-                                            </li>
-                                            <li>
-                                                <a id="arb" class="dropdown-item"
-                                                    href="javascript:void(0)">Arbic</a>
-                                            </li>
-                                            <li>
-                                                <a id="rus" class="dropdown-item"
-                                                    href="javascript:void(0)">Rusia</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="javascript:void(0)">Chinese</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                            @if (Route::has('login'))
+                                @auth
+                                    @if (Auth::user()->utype === 'SADM')
+                                        <div class="rightside-menu">
+                                            <div class="dropdown-dollar">
+                                                <div class="dropdown">
+                                                    <li class="nav-item dropdown">
+                                                        <a href="{{ route('superAdmin.dashboard') }}"
+                                                            class="nav-link dropdown-toggle"
+                                                            style="color: rgb(55, 58, 55)">Super Admin</a>
+                                                    </li>
+                                                </div>
+                                                <div class="dropdown">
+                                                    <form method="POST" action="{{ route('logout') }}">
+                                                        @csrf
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="{{ route('logout') }}"
+                                                                onclick="event.preventDefault();
+                                                            this.closest('form').submit(); "
+                                                                role="button" style="color: black;">
+                                                                {{-- style="background-color: #0baf9a ; color:white"> --}}
+                                                                {{-- <i class="fas fa-sign-out-alt"></i> --}}
 
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle m-0" type="button" id="dropdownMenuButton2"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            <span>Dollar</span> <i class="fa-solid fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li>
-                                                <a id="usd" class="dropdown-item"
-                                                    href="javascript:void(0)">USD</a>
-                                            </li>
-                                            <li>
-                                                <a id="inr" class="dropdown-item"
-                                                    href="javascript:void(0)">INR</a>
-                                            </li>
-                                            <li>
-                                                <a id="eur" class="dropdown-item"
-                                                    href="javascript:void(0)">EUR</a>
-                                            </li>
-                                            <li>
-                                                <a id="aud" class="dropdown-item"
-                                                    href="javascript:void(0)">AUD</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                                                {{ __('Log Out') }}
+                                                            </a>
+                                                        </li>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                        @elseif(Auth::user()->utype === 'ADM')
+                                            <div class="rightside-menu">
+                                                <div class="dropdown-dollar">
+                                                    <div class="dropdown">
+                                                        <li class="nav-item dropdown">
+                                                            <a href="{{ route('admin.dashboard') }}"
+                                                                class="nav-link dropdown-toggle">Admin</a>
+                                                        </li>
+                                                    </div>
+                                                    {{-- ADMIN --}}
+                                                    <div class="dropdown">
+                                                        <form method="POST" action="{{ route('logout') }}">
+                                                            @csrf
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" href="{{ route('logout') }}"
+                                                                    onclick="event.preventDefault();
+                                                                    this.closest('form').submit(); "
+                                                                    role="button"
+                                                                    style="background-color: #0baf9a ; color:white">
+                                                                    {{-- <i class="fas fa-sign-out-alt"></i> --}}
+
+                                                                    {{ __('Log Out') }}
+                                                                </a>
+                                                            </li>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <div class="rightside-menu">
+                                                    <div class="dropdown-dollar">
+                                                        <div class="dropdown">
+                                                            <li class="nav-item dropdown">
+                                                                USer
+                                                            </li>
+                                                        </div>
+                                                        <div class="dropdown">
+                                                            <form method="POST" action="{{ route('logout') }}">
+                                                                @csrf
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" href="{{ route('logout') }}"
+                                                                        onclick="event.preventDefault();
+                                                                        this.closest('form').submit(); "
+                                                                        role="button">
+                                                                        {{-- <i class="fas fa-sign-out-alt"></i> --}}
+
+                                                                        {{ __('Log Out') }}
+                                                                    </a>
+                                                                </li>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                    @endif
+                                @else
+                                    <div class="rightside-menu">
+                                        <div class="dropdown-dollar">
+                                            <div class="dropdown">
+                                                <li class="nav-item dropdown">
+                                                    <a class="dropdown-item ps-xl-2 ps-0 h6 py-2 mb-3"
+                                                        href="{{ route('login') }}">Login</a>
+                                                </li>
+                                            </div>
+                                            <div class="dropdown">
+                                                <li class="nav-item dropdown">
+                                                    <a class="dropdown-item ps-xl-2 ps-0 h6 py-2 mb-3"
+                                                        href="{{ route('register') }}">Register</a>
+                                                </li>
+                                            </div>
+                                        </div>
+                                    @endauth
+                                @else
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <li class="nav-item dropdown">
+                                            <a class="dropdown-item ps-xl-2 ps-0 h6 py-2 mb-3">Login</a>
+
+                                            <a class="nav-link" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                            this.closest('form').submit(); "
+                                                role="button">
+                                                <i class="fas fa-sign-out-alt"></i>
+
+                                                {{ __('Log Out') }}
+                                            </a>
+                                        </li>
+                                        {{-- </div> --}}
+                                    </form>
+                            @endif
+                            {{-- @guest
+                                        <li class="nav-item dropdown">
+                                            <a class="dropdown-item ps-xl-2 ps-0 h6 py-2 mb-3"
+                                                href="{{ route('login') }}">Login</a>
+                                        </li>
+
+                                        <li class="nav-item dropdown">
+                                            <a class="dropdown-item ps-xl-2 ps-0 h6 py-2 mb-3"
+                                                href="{{ route('register') }}">Register</a>
+                                        </li>
+                                        @else
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <div class="nav-item">
+                                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                            this.closest('form').submit(); " role="button">
+                                                    <i class="fas fa-sign-out-alt"></i>
+                                    
+                                                    {{ __('Log Out') }}
+                                                </a>
+                                            </div>
+                                        </form>
+                                        @endguest --}}
+
 
                                 <div class="option-list">
                                     <ul>
@@ -945,99 +1027,7 @@
                                             </ul>
                                         </li>
 
-                                        @if (Route::has('login'))
-                                            @auth
-                                                @if (Auth::user()->utype === 'SADM')
-                                                    <a href="{{ route('superAdmin.dashboard') }}">Super Admin</a>
-                                                    <form method="POST" action="{{ route('logout') }}">
-                                                        @csrf
-                                                        <div class="nav-item">
-                                                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                        this.closest('form').submit(); " role="button">
-                                                                <i class="fas fa-sign-out-alt"></i>
-                                                
-                                                                {{ __('Log Out') }}
-                                                            </a>
-                                                        </div>
-                                                    </form>
-                                                @elseif(Auth::user()->utype === 'ADM')
-                                                <a href="{{ route('admin.dashboard') }}">Admin</a>
-                                                    {{-- ADMIN --}}
-                                                    <form method="POST" action="{{ route('logout') }}">
-                                                        @csrf
-                                                        <div class="nav-item">
-                                                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                        this.closest('form').submit(); " role="button">
-                                                                <i class="fas fa-sign-out-alt"></i>
-                                                
-                                                                {{ __('Log Out') }}
-                                                            </a>
-                                                        </div>
-                                                    </form>
-                                                @else
-                                                    USer
-                                                    <form method="POST" action="{{ route('logout') }}">
-                                                        @csrf
-                                                        <div class="nav-item">
-                                                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                        this.closest('form').submit(); " role="button">
-                                                                <i class="fas fa-sign-out-alt"></i>
-                                                
-                                                                {{ __('Log Out') }}
-                                                            </a>
-                                                        </div>
-                                                    </form>
-                                                @endif
-
-                                                @else
-                                                <li class="nav-item dropdown">
-                                                    <a class="dropdown-item ps-xl-2 ps-0 h6 py-2 mb-3"
-                                                        href="{{ route('login') }}">Login</a>
-                                                </li>
-        
-                                                <li class="nav-item dropdown">
-                                                    <a class="dropdown-item ps-xl-2 ps-0 h6 py-2 mb-3"
-                                                        href="{{ route('register') }}">Register</a>
-                                                </li>
-                                                
-                                            @endauth
-                                           
-                                        @else
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                                            <div class="nav-item">
-                                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                            this.closest('form').submit(); " role="button">
-                                                    <i class="fas fa-sign-out-alt"></i>
-                                    
-                                                    {{ __('Log Out') }}
-                                                </a>
-                                            </div>
-                                        </form>
-                                        @endif
-                                        {{-- @guest
-                                        <li class="nav-item dropdown">
-                                            <a class="dropdown-item ps-xl-2 ps-0 h6 py-2 mb-3"
-                                                href="{{ route('login') }}">Login</a>
-                                        </li>
-
-                                        <li class="nav-item dropdown">
-                                            <a class="dropdown-item ps-xl-2 ps-0 h6 py-2 mb-3"
-                                                href="{{ route('register') }}">Register</a>
-                                        </li>
-                                        @else
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                                            <div class="nav-item">
-                                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                            this.closest('form').submit(); " role="button">
-                                                    <i class="fas fa-sign-out-alt"></i>
-                                    
-                                                    {{ __('Log Out') }}
-                                                </a>
-                                            </div>
-                                        </form>
-                                        @endguest --}}
+                                        
 
                                     </ul>
                                 </div>

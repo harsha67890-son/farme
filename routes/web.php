@@ -5,12 +5,18 @@ use App\Http\Livewire\ShopComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\Brand\BrandComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Livewire\Admin\Coupen\CoupenComponent;
+use App\Http\Livewire\Admin\Slider\SliderComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\Brand\AddBrandComponent;
 use App\Http\Livewire\Admin\Brand\EditBrandComponent;
+use App\Http\Livewire\Admin\Coupen\AddCoupenComponent;
 use App\Http\Livewire\Admin\Products\ProductComponent;
+use App\Http\Livewire\Admin\Slider\AddSliderComponent;
 use App\Http\Livewire\Admin\Category\CategoryComponent;
+use App\Http\Livewire\Admin\Coupen\EditCoupenComponent;
 use App\Http\Livewire\Admin\Packsize\PackSizeComponent;
+use App\Http\Livewire\Admin\Slider\EditSliderComponent;
 use App\Http\Livewire\Admin\Products\AddProductComponent;
 use App\Http\Livewire\Admin\Category\AddcategoryComponent;
 use App\Http\Livewire\Admin\Packsize\AddPackSizeComponent;
@@ -81,6 +87,18 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/admin-user/packsize',PackSizeComponent::class)->name('admin.packsize');
     Route::get('/admin-user/add-packsize',AddPackSizeComponent::class)->name('admin.packsize.add');
     Route::get('/admin-user/edit-packsize/{packsize_id}',EditpackSizeComponent::class)->name('admin.packsize.edit');
+
+
+    //coupen
+    Route::get('/admin-user/coupen',CoupenComponent::class)->name('admin.coupen');
+    Route::get('/admin-user/add-coupens',AddCoupenComponent::class)->name('admin.coupen.add');
+    Route::get('/admin-user/edit-coupen/{coupen_slug}',EditCoupenComponent::class)->name('admin.coupen.edit');
+    
+    //Slider
+    Route::get('/admin-user/slider',SliderComponent::class)->name('admin.slider');
+    Route::get('/admin-user/add-slider',AddSliderComponent::class)->name('admin.slider.add');
+    Route::get('/admin-user/edit-slider/{slider_slug}',EditSliderComponent::class)->name('admin.slider.edit');
+
 
 });
 
