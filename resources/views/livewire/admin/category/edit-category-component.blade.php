@@ -15,7 +15,7 @@
                                         <form class="d-inline-flex">
                                             <a href="{{ route('admin.category') }}"
                                                 class="align-items-center btn btn-theme d-flex">
-                                                <i data-feather="plus-square"></i>List Category
+                                                <i data-feather="plus-square"></i>List Category 
                                             </a>
                                         </form>
                                     </div>

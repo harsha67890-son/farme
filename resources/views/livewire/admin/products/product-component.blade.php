@@ -144,13 +144,13 @@
 
                                                         <td>
                                                             <ul>
-                                                                {{-- <li>
+                                                                <li>
                                                                   <a
                                                                         href="{{ route('admin.product.viewProduct', ['slug' => $item->slug]) }}">
 
                                                                         <i class="ri-eye-line"></i>
                                                                         </a>
-                                                                </li> --}}
+                                                                </li>
 
                                                                 {{-- <li>
                                                                     <a href="javascript:void(0)">

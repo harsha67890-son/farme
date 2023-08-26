@@ -9,6 +9,7 @@ use App\Http\Livewire\Admin\Coupen\CoupenComponent;
 use App\Http\Livewire\Admin\Slider\SliderComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\Brand\AddBrandComponent;
+use App\Http\Livewire\User\Category\CategoryProduct;
 use App\Http\Livewire\Admin\Brand\EditBrandComponent;
 use App\Http\Livewire\Admin\Coupen\AddCoupenComponent;
 use App\Http\Livewire\Admin\Products\ProductComponent;
@@ -44,66 +45,60 @@ use App\Http\Livewire\Admin\Products\BestSellingProductComponent;
 //     return view('welcome');
 // });
 
-
-
 Route::get('/', HomeComponent::class)->name('home');
 Route::get('/shop', ShopComponent::class)->name('shop');
+
+Route::get('/category/{category_slug}',CategoryProduct::class)->name('user.category');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 });
-Route::view('/adminLogin','auth.adminLogin');
+Route::view('/adminLogin', 'auth.adminLogin');
 //For User
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    
-    Route::get('/user-dashboard',UserDashboardComponent::class)->name('user.dashboard');
+    Route::get('/user-dashboard', UserDashboardComponent::class)->name('user.dashboard');
 });
 
 //For Admin
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    
-    Route::get('/admin-user',AdminDashboardComponent::class)->name('admin.dashboard');
+    Route::get('/admin-user', AdminDashboardComponent::class)->name('admin.dashboard');
 
     //products
-    Route::get('/admin-user/products',ProductComponent::class)->name('admin.product.index');
-    Route::get('/admin-user/add-products',AddProductComponent::class)->name('admin.product.add');
-    Route::get('/admin-user/view-product/{slug}',ViewProductComponent::class)->name('admin.product.viewProduct');
-    Route::get('/admin-user/edit-product/{product_id}',EditProductsComponent::class)->name('admin.product.edit');
-    Route::get('/admin-user/top-product',TopProductsComponent::class)->name('admin.product.topProduct');
-    Route::get('/admin-user/best-product',BestSellingProductComponent::class)->name('admin.product.bestProduct');
+    Route::get('/admin-user/products', ProductComponent::class)->name('admin.product.index');
+    Route::get('/admin-user/add-products', AddProductComponent::class)->name('admin.product.add');
+    Route::get('/admin-user/view-product/{slug}', ViewProductComponent::class)->name('admin.product.viewProduct');
+    Route::get('/admin-user/edit-product/{product_id}', EditProductsComponent::class)->name('admin.product.edit');
+    Route::get('/admin-user/top-product', TopProductsComponent::class)->name('admin.product.topProduct');
+    Route::get('/admin-user/best-product', BestSellingProductComponent::class)->name('admin.product.bestProduct');
     //category
-    Route::get('/admin-user/category',CategoryComponent::class)->name('admin.category');
-    Route::get('/admin-user/add-category/',AddcategoryComponent::class)->name('admin.category.add');
-    Route::get('/admin-user/edit-category/{category_slug}',EditCategoryComponent::class)->name('admin.category.edit');
+    Route::get('/admin-user/category', CategoryComponent::class)->name('admin.category');
+    Route::get('/admin-user/add-category/', AddcategoryComponent::class)->name('admin.category.add');
+    Route::get('/admin-user/edit-category/{category_slug}', EditCategoryComponent::class)->name('admin.category.edit');
 
     //brand
-    Route::get('/admin-user/brand',BrandComponent::class)->name('admin.brand');
-    Route::get('/admin-user/add-brand',AddBrandComponent::class)->name('admin.brand.add');
-    Route::get('/admin-user/edit-brand/{brand_slug}',EditBrandComponent::class)->name('admin.brand.edit');
+    Route::get('/admin-user/brand', BrandComponent::class)->name('admin.brand');
+    Route::get('/admin-user/add-brand', AddBrandComponent::class)->name('admin.brand.add');
+    Route::get('/admin-user/edit-brand/{brand_slug}', EditBrandComponent::class)->name('admin.brand.edit');
 
     //pack size
-    Route::get('/admin-user/packsize',PackSizeComponent::class)->name('admin.packsize');
-    Route::get('/admin-user/add-packsize',AddPackSizeComponent::class)->name('admin.packsize.add');
-    Route::get('/admin-user/edit-packsize/{packsize_id}',EditpackSizeComponent::class)->name('admin.packsize.edit');
-
+    Route::get('/admin-user/packsize', PackSizeComponent::class)->name('admin.packsize');
+    Route::get('/admin-user/add-packsize', AddPackSizeComponent::class)->name('admin.packsize.add');
+    Route::get('/admin-user/edit-packsize/{packsize_id}', EditpackSizeComponent::class)->name('admin.packsize.edit');
 
     //coupen
-    Route::get('/admin-user/coupen',CoupenComponent::class)->name('admin.coupen');
-    Route::get('/admin-user/add-coupens',AddCoupenComponent::class)->name('admin.coupen.add');
-    Route::get('/admin-user/edit-coupen/{coupen_slug}',EditCoupenComponent::class)->name('admin.coupen.edit');
-    
+    Route::get('/admin-user/coupen', CoupenComponent::class)->name('admin.coupen');
+    Route::get('/admin-user/add-coupens', AddCoupenComponent::class)->name('admin.coupen.add');
+    Route::get('/admin-user/edit-coupen/{coupen_slug}', EditCoupenComponent::class)->name('admin.coupen.edit');
+
     //Slider
-    Route::get('/admin-user/slider',SliderComponent::class)->name('admin.slider');
-    Route::get('/admin-user/add-slider',AddSliderComponent::class)->name('admin.slider.add');
-    Route::get('/admin-user/edit-slider/{slider_slug}',EditSliderComponent::class)->name('admin.slider.edit');
-
-
+    Route::get('/admin-user/slider', SliderComponent::class)->name('admin.slider');
+    Route::get('/admin-user/add-slider', AddSliderComponent::class)->name('admin.slider.add');
+    Route::get('/admin-user/edit-slider/{slider_slug}', EditSliderComponent::class)->name('admin.slider.edit');
 });
 
 //For Super Admin
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    
-    Route::get('/super-admin',SuperAdminDashboardComponent::class)->name('superAdmin.dashboard');
+    Route::get('/super-admin', SuperAdminDashboardComponent::class)->name('superAdmin.dashboard');
 });
