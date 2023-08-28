@@ -574,7 +574,7 @@
                                         </button>
                                     </div>
 
-                                    <a href="product-left-thumbnail.html">
+                                    <a href="{{ route('product_view',['product_slug' => $item->slug]) }}"> 
                                         <img src="{{ asset('/images/products') }}/{{ $item->image }}"
                                             class="img-fluid" alt="">
                                     </a>
@@ -586,11 +586,11 @@
                                                 <i class="iconly-Show icli"></i>
                                             </a>
                                         </li>
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
+                                        {{-- <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
                                             <a href="compare.html">
                                                 <i class="iconly-Swap icli"></i>
                                             </a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
 
@@ -617,7 +617,7 @@
                                     </a>
                                     <h5 class="price theme-color">₹{{ $item->mrp }}<del>₹{{ $item->price }}</del>
                                     </h5>
-                                    <div class="price-qty">
+                                    {{-- <div class="price-qty">
                                         <div class="counter-number">
                                             <div class="counter">
                                                 <div class="qty-left-minus" data-type="minus" data-field="">
@@ -634,7 +634,7 @@
                                         <button class="buy-button buy-button-2 btn btn-cart">
                                             <i class="iconly-Buy icli text-white m-0"></i>
                                         </button>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

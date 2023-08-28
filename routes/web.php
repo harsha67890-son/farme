@@ -26,6 +26,7 @@ use App\Http\Livewire\Admin\Products\ViewProductComponent;
 use App\Http\Livewire\Admin\Category\EditCategoryComponent;
 use App\Http\Livewire\Admin\Packsize\EditpackSizeComponent;
 use App\Http\Livewire\Admin\Products\EditProductsComponent;
+use App\Http\Livewire\User\ProductView\ProductViewComponent;
 use App\Http\Livewire\SuperAdmin\SuperAdminDashboardComponent;
 use App\Http\Livewire\Admin\Products\BestSellingProductComponent;
 // use App\Http\Livewire\Admin\Packsize\packsizeComponent;
@@ -49,6 +50,8 @@ Route::get('/', HomeComponent::class)->name('home');
 Route::get('/shop', ShopComponent::class)->name('shop');
 
 Route::get('/category/{category_slug}',CategoryProduct::class)->name('user.category');
+
+Route::get('/product-view/{product_slug}',ProductViewComponent::class)->name('product_view');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {

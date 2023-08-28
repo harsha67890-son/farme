@@ -15,8 +15,8 @@
         @foreach ($category as $item)
             <ul class="category-list">
                 <li class="onhover-category-list">
-                    <a href="{{ route('user.category',['category_slug' => $item->slug]) }}" class="category-name">
-                        {{-- <img src="../assets/svg/1/vegetable.svg" alt=""> --}}
+                    <a href="{{ route('user.category', ['category_slug' => $item->slug]) }}" class="category-name">
+                        <img src="../assets/svg/1/vegetable.svg" alt="">
                         <h6>{{ $item->category_name }}</h6>
                         {{-- <i class="fa-solid fa-angle-right"></i> --}}
                     </a>
