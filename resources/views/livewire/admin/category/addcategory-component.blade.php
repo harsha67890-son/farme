@@ -22,55 +22,58 @@
                                 </div>
 
                                 <div class="panel-body">
-                                    @if(Session::has('message'))
-                                    <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
-                                @endif
+                                    @if (Session::has('message'))
+                                        <div class="alert alert-success" role="alert">{{ Session::get('message') }}
+                                        </div>
+                                    @endif
 
-                                <form class="theme-form theme-form-2 mega-form" wire:submit.prevent="storeCategory">
-                                    <div class="mb-4 row align-items-center">
-                                        <label class="form-label-title col-sm-3 mb-0">Category Name</label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" type="text" placeholder="Category Name" wire:model ="category_name"  wire:keyup="generateslug">
+                                    <form class="theme-form theme-form-2 mega-form" wire:submit.prevent="storeCategory">
+                                        <div class="mb-4 row align-items-center">
+                                            <label class="form-label-title col-sm-3 mb-0">Category Name</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" type="text" placeholder="Category Name"
+                                                    wire:model="category_name" wire:keyup="generateslug">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-4 row align-items-center">
-                                        <label class="form-label-title col-sm-3 mb-0">Slug</label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" type="text" placeholder="Slug" wire:model ="slug">
+                                        <div class="mb-4 row align-items-center">
+                                            <label class="form-label-title col-sm-3 mb-0">Slug</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" type="text" placeholder="Slug"
+                                                    wire:model="slug">
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="mb-4 row align-items-center">
-                                        <label class="col-sm-3 col-form-label form-label-title">Image</label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control form-choose" type="file" id="formFile" wire:model="image"
-                                               >
-                                               @if ($image)
-                                               <img src="{{ $image->temporaryUrl() }}" width="120" />
-                                           @endif
+                                        <div class="mb-4 row align-items-center">
+                                            <label class="col-sm-3 col-form-label form-label-title">Image</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control form-choose" type="file" id="formFile"
+                                                    wire:model="image">
+                                                @if ($image)
+                                                    <img src="{{ $image->temporaryUrl() }}" width="120" />
+                                                @endif
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="mb-4 row align-items-center">
-                                        <div class="col-sm-3 form-label-title">Submit Button</div>
-                                        <div class="col-sm-9">
-                                            <button class="btn btn-primary" type="submit">
-                                                Save
-                                            </button>
+                                        <div class="mb-4 row align-items-center">
+                                            <div class="col-sm-3 form-label-title">Submit Button</div>
+                                            <div class="col-sm-9">
+                                                <button class="btn btn-primary" type="submit">
+                                                    Save
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- New Product Add End -->
+        <!-- New Product Add End -->
 
-    <!-- footer Start -->
-    {{-- <div class="container-fluid">
+        <!-- footer Start -->
+        {{-- <div class="container-fluid">
         <footer class="footer">
             <div class="row">
                 <div class="col-md-12 footer-copyright text-center">
@@ -79,5 +82,5 @@
             </div>
         </footer>
     </div> --}}
-    <!-- footer En -->
-</div>
+        <!-- footer En -->
+    </div>

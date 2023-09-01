@@ -9,6 +9,11 @@ use App\Models\Category;
 
 class HomeComponent extends Component
 {
+
+    public function store()
+    {
+        dd('hhh');
+    }
     public function render()
     {
         $sliders = Slider::all()->unique('slider_name');

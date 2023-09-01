@@ -161,7 +161,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        Gloudemans\Shoppingcart\shoppingcartServiceProvider::class,
+        // Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
+        // Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider::class, 
         /*
          * Package Service Providers...
          */
@@ -232,6 +234,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Cart'=>Gloudemans\Shoppingcart\Facades\Cart::class,
+        // 'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
     ],
 
 ];

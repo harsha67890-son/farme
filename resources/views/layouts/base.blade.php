@@ -9,7 +9,7 @@
     <meta name="keywords" content="Fastkart">
     <meta name="author" content="Fastkart">
     <link rel="icon" href="../assets/images/favicon/4.png" type="image/x-icon">
-    <title>On-demand last-mile delivery</title>
+    <title>Farme</title>
 
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -30,7 +30,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/vendors/font-awesome.css') }}">
 
     <!-- feather icon css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/vendors/feather-icon.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/vendors/feather-icon.css') }}"> --}}
 
     <!-- slick css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/vendors/slick/slick.css') }}">
@@ -41,6 +41,7 @@
 
     <!-- Template css -->
     <link id="color-link" rel="stylesheet" type="text/css" href="{{ asset('/assets/css/style.css') }}">
+    @livewireStyles
 </head>
 
 <body class="theme-color-2 bg-effect">
@@ -1308,10 +1309,10 @@
     <script src="{{ asset('/assets/js/quantity.js') }}"></script>
 
     <!-- Timer Js -->
-    <script src="{{ asset('/assets/js/timer1.js') }}"></script>
+    {{-- <script src="{{ asset('/assets/js/timer1.js') }}"></script>
     <script src="{{ asset('/assets/js/timer2.js') }}"></script>
     <script src="{{ asset('/assets/js/timer3.js') }}"></script>
-    <script src="{{ asset('/assets/js/timer4.js') }}"></script>
+    <script src="{{ asset('/assets/js/timer4.js') }}"></script> --}}
 
     <!-- Fly Cart Js -->
     <script src="{{ asset('/assets/js/fly-cart.js') }}"></script>
@@ -1322,6 +1323,8 @@
 
     <!-- script js -->
     <script src="{{ asset('/assets/js/script.js') }}"></script>
+    <script src="{{ asset('/assets/js/app.js') }}"></script>
+    @livewireScripts
 </body>
 
 </html>

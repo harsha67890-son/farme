@@ -574,7 +574,7 @@
                                         </button>
                                     </div>
 
-                                    <a href="{{ route('product_view',['product_slug' => $item->slug]) }}"> 
+                                    <a href="{{ route('product_view',['slug' => $item->slug]) }}"> 
                                         <img src="{{ asset('/images/products') }}/{{ $item->image }}"
                                             class="img-fluid" alt="">
                                     </a>
@@ -617,7 +617,7 @@
                                     </a>
                                     <h5 class="price theme-color">₹{{ $item->mrp }}<del>₹{{ $item->price }}</del>
                                     </h5>
-                                    {{-- <div class="price-qty">
+                                    <div class="price-qty">
                                         <div class="counter-number">
                                             <div class="counter">
                                                 <div class="qty-left-minus" data-type="minus" data-field="">
@@ -631,10 +631,11 @@
                                             </div>
                                         </div>
 
-                                        <button class="buy-button buy-button-2 btn btn-cart">
+                                        {{-- <button class="buy-button buy-button-2 btn btn-cart" >
                                             <i class="iconly-Buy icli text-white m-0"></i>
-                                        </button>
-                                    </div> --}}
+                                        </button> --}}
+                                        <a href="#" wire:click.prevent='store()'>cart</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

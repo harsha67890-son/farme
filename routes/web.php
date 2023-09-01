@@ -51,7 +51,7 @@ Route::get('/shop', ShopComponent::class)->name('shop');
 
 Route::get('/category/{category_slug}',CategoryProduct::class)->name('user.category');
 
-Route::get('/product-view/{product_slug}',ProductViewComponent::class)->name('product_view');
+Route::get('/product-view/{slug}',ProductViewComponent::class)->name('product_view');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {
