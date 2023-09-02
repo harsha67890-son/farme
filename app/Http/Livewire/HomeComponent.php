@@ -6,9 +6,17 @@ use App\Models\Slider;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
+use Cart;
 
 class HomeComponent extends Component
 {
+
+    public function addToWishlist($product_id, $product_name, $product_price)
+    {
+        Cart::instance('wishlist')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
+        $this->emitTo('wishlist-count-component','refreshComponent');
+        // $this->redirectRoute('product_view', $this->slug);
+    }
     public function render()
     {
         $sliders = Slider::all()->unique('slider_name');

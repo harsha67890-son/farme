@@ -9,22 +9,28 @@ class CartComponent extends Component
 {
     public function increaseQuantity($rowId)
     {
-        $product = Cart::get($rowId);
+        $product = Cart::instance('cart')->get($rowId);
         $qty = $product->qty + 1;
-        Cart::update($rowId, $qty);
+        Cart::instance('cart')->update($rowId, $qty);
+        $this->emitTo('cart.wishlist-count-component','refreshComponent');
+
     }
     public function decreaseQuentity($rowId)
     {
         
-        $product = Cart::get($rowId);
+        $product = Cart::instance('cart')->get($rowId);
         $qty = $product->qty - 1;
-        Cart::update($rowId, $qty);
+        Cart::instance('cart')->update($rowId, $qty);
+        $this->emitTo('cart-count-component','refreshComponent');
+
     }
 
     public function destroy($rowId)
     {
-        Cart::remove($rowId);
+        Cart::instance('cart')->remove($rowId);
+        $this->emitTo('cart-count-component','refreshComponent');
         session()->flash('message', 'Remove Cart Item');
+
     }
     public function render()
     {

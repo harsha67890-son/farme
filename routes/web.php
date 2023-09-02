@@ -4,6 +4,8 @@ use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\WishListComponent;
+use App\Http\Livewire\WishlistCountComponent;
 use App\Http\Livewire\Admin\Brand\BrandComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\Coupen\CoupenComponent;
@@ -50,6 +52,7 @@ use App\Http\Livewire\Admin\Products\BestSellingProductComponent;
 Route::get('/', HomeComponent::class)->name('home');
 Route::get('/shop', ShopComponent::class)->name('shop');
 Route::get('/cart',CartComponent::class)->name('cart');
+Route::get('/wishlist',WishListComponent::class)->name('wishlist');
 
 Route::get('/category/{category_slug}',CategoryProduct::class)->name('user.category');
 

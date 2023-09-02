@@ -31,8 +31,8 @@
                           <div class="table-responsive-xl">
                               <table class="table">
                                   <tbody>
-                                      @if (Cart::count() > 0)
-                                          @foreach (Cart::content() as $item)
+                                      @if (Cart::instance('cart')->count() > 0)
+                                          @foreach (Cart::instance('cart')->content() as $item)
                                               {{-- {{ dd($item) }} --}}
                                               <tr class="product-box-contain">
                                                   <td class="product-detail">
@@ -170,12 +170,12 @@
                               <ul>
                                   <li>
                                       <h4>Subtotal</h4>
-                                      <h4 class="price">₹{{ Cart::subtotal() }}</h4>
+                                      <h4 class="price">₹{{ Cart::instance('cart')->subtotal() }}</h4>
                                   </li>
 
                                   <li>
                                       <h4>Tax</h4>
-                                      <h4 class="price">₹{{ Cart::tax() }}</h4>
+                                      <h4 class="price">₹{{ Cart::instance('cart')->tax() }}</h4>
                                   </li>
 
                                   <li>
@@ -193,7 +193,7 @@
                           <ul class="summery-total">
                               <li class="list-total border-top-0">
                                   <h4>Total (RS)</h4>
-                                  <h4 class="price theme-color">₹{{ Cart::total() }}</h4>
+                                  <h4 class="price theme-color">₹{{ Cart::instance('cart')->total() }}</h4>
                               </li>
                           </ul>
 

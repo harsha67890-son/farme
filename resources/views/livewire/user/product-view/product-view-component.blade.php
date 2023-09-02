@@ -242,23 +242,25 @@
                                               </div>
                                           </div>
                                       </div>
-
-                                      {{-- <form class="theme-form theme-form-2 mega-form"
-                                          wire:submit.prevent="addContact({{ $product->slug }})"> --}}
-
-                                      {{-- <input type="text" value="{{ $product->id }}" wire:model='product_id'>
-                                          <button type="submit" class="btn btn-primary">Add To Cart</button> --}}
-                                      {{-- <a href="#" class="btn btn-primary" type="button">Add</a> --}}
-                                      </form>
-
                                   </div>
+
+                                  @php
+                                      $witems = Cart::instance('wishlist')->content()->pluck('id');
+                                  @endphp
 
 
                                   <div class="buy-box">
-                                      <a href="#" wire:click.prevent="store({{ $product->id }})">
-                                          <i data-feather="heart"></i>
-                                          <span>Add To Wishlist</span>
-                                      </a>
+                                      @if ($witems->contains($product->id))
+                                      <a href="#" wire:click.prevent="removeFromWishlist({{ $product->id }})">
+                                        <i class='fa-solid fa-heart' style='color: red'></i>
+                                        <span>Add To Wishlist</span>
+                                    </a>
+                                      @else
+                                      <a href="{{ route('wishlist') }}" wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}','{{ $product->price }}')">
+                                        <i data-feather="heart"></i>
+                                        <span>Add To Wishlist</span>
+                                    </a>
+                                      @endif
 
                                       <a href="compare.html">
                                           <i data-feather="shuffle"></i>

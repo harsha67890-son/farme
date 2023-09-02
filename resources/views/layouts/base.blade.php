@@ -47,14 +47,14 @@
 <body class="theme-color-2 bg-effect">
 
     <!-- Loader Start -->
-    <div class="fullpage-loader">
+    {{-- <div class="fullpage-loader">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-    </div>
+    </div> --}}
     <!-- Loader End -->
 
     <!-- Header Start -->
@@ -253,44 +253,49 @@
                                         @endguest --}}
 
 
-                                <div class="option-list">
-                                    <ul>
-                                        <li>
-                                            <a href="javascript:void(0)" class="header-icon user-icon search-icon">
-                                                <i class="iconly-Profile icli"></i>
-                                            </a>
-                                        </li>
+                            <div class="option-list">
+                                <ul>
+                                    <li>
+                                        <a href="javascript:void(0)" class="header-icon user-icon search-icon">
+                                            <i class="iconly-Profile icli"></i>
+                                        </a>
+                                    </li>
 
-                                        <li>
-                                            <a href="javascript:void(0)" class="header-icon search-box search-icon">
-                                                <i class="iconly-Search icli"></i>
-                                            </a>
-                                        </li>
+                                    <li>
+                                        <a href="javascript:void(0)" class="header-icon search-box search-icon">
+                                            <i class="iconly-Search icli"></i>
+                                        </a>
+                                    </li>
 
-                                        <li>
-                                            <a href="compare.html" class="header-icon">
-                                                <small class="badge-number">2</small>
-                                                <i class="iconly-Swap icli"></i>
-                                            </a>
-                                        </li>
+                                    <li>
+                                        <a href="compare.html" class="header-icon">
+                                            <small class="badge-number">2</small>
+                                            <i class="iconly-Swap icli"></i>
+                                        </a>
+                                    </li>
+                                    @livewire('wishlist-count-component')
+                                    @livewire('cart-count-component')
 
-                                        <li class="onhover-dropdown">
-                                            <a href="javascript:void(0)" class="header-icon swap-icon">
-                                                <i class="iconly-Heart icli"></i>
-                                            </a>
+                                    {{-- <li class="onhover-dropdown">
+                                        <a href="javascript:void(0)" class="header-icon swap-icon">
+                                            @if (Cart::instance('wishlist')->count() > 0)
+                                                <small
+                                                    class="badge-number">{{ Cart::instance('wishlist')->count() }}</small>
+                                            @endif
+                                            <i class="iconly-Heart icli"></i>
+                                        </a>
+                                    </li> --}}
 
-                                        </li>
-
-                                        <li class="onhover-dropdown">
-                                            @if (Cart::count()>0)
+                                    {{-- <li class="onhover-dropdown">
+                                        @if (Cart::instance('cart')->count() > 0)
                                             <a href="{{ route('cart') }}" class="header-icon bag-icon">
-                                                <small class="badge-number">{{ Cart::count() }}</small>
+                                                <small class="badge-number">{{ Cart::instance('cart')->count() }}</small>
                                                 <i class="iconly-Bag-2 icli"></i>
                                             </a>
-                                            @endif
-                                            <div class="onhover-div">
-                                                <ul class="cart-list">
-                                                    @foreach (Cart::content() as $item)
+                                        @endif
+                                        <div class="onhover-div">
+                                            <ul class="cart-list">
+                                                @foreach (Cart::content() as $item)
                                                     <li>
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
@@ -302,38 +307,40 @@
                                                                 <a href="product-left-thumbnail.html">
                                                                     <h5>{{ $item->model->name }}</h5>
                                                                 </a>
-                                                                <h6><span>{{ $item->qty }} x</span> {{ $item->model->price }}</h6>
-                                                                <button class="close-button" wire:click.prevent="destroy('{{ $item->rowId }}')">
+                                                                <h6><span>{{ $item->qty }} x</span>
+                                                                    {{ $item->model->price }}</h6>
+                                                                <button class="close-button"
+                                                                    wire:click.prevent="destroy('{{ $item->rowId }}')">
                                                                     <i class="fa-solid fa-xmark"></i>
                                                                 </button>
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    @endforeach
+                                                @endforeach
 
-                                                </ul>
+                                            </ul>
 
 
-                                                <div class="price-box">
-                                                    <h5>Price :</h5>
-                                                    <h4 class="theme-color fw-bold">${{ Cart::subtotal() }}</h4>
-                                                </div>
-
-                                                <div class="button-group">
-                                                    <a href="cart.html" class="btn btn-sm cart-button">View Cart</a>
-                                                    <a href="checkout.html"
-                                                        class="btn btn-sm cart-button theme-bg-color
-                                                    text-white">Checkout</a>
-                                                </div>
+                                            <div class="price-box">
+                                                <h5>Price :</h5>
+                                                <h4 class="theme-color fw-bold">${{ Cart::subtotal() }}</h4>
                                             </div>
-                                        </li>
-                                    </ul>
-                                </div>
+
+                                            <div class="button-group">
+                                                <a href="cart.html" class="btn btn-sm cart-button">View Cart</a>
+                                                <a href="checkout.html"
+                                                    class="btn btn-sm cart-button theme-bg-color
+                                                    text-white">Checkout</a>
+                                            </div>
+                                        </div>
+                                    </li> --}}
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         <div class="container-fluid-lg">
             <div class="row">
@@ -616,7 +623,7 @@
                                             </ul>
                                         </li>
 
-                                        
+
 
                                     </ul>
                                 </div>
