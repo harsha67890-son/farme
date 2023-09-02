@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,7 @@ use App\Http\Livewire\Admin\Products\BestSellingProductComponent;
 
 Route::get('/', HomeComponent::class)->name('home');
 Route::get('/shop', ShopComponent::class)->name('shop');
+Route::get('/cart',CartComponent::class)->name('cart');
 
 Route::get('/category/{category_slug}',CategoryProduct::class)->name('user.category');
 

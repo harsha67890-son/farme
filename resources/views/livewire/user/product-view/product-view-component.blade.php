@@ -43,7 +43,7 @@
                                           <div class="product-main no-arrow">
                                               <div>
                                                   <div class="slider-image">
-                                                      <img src="{{ asset('/images/products') }}/{{ $product->image }}"
+                                                      <img src="{{ asset('./images/products') }}/{{ $product->image }}"
                                                           id="img-1"
                                                           data-zoom-image="{{ asset('/images/products') }}/{{ $product->image }}"
                                                           class="
@@ -157,7 +157,7 @@
                               <div class="right-box-contain">
                                   {{-- @foreach ($product as $products) --}}
                                   <h6 class="offer-top">30% Off</h6>
-                                  <span class="index">{{ Cart::instance('cart')->count() }} items</span>
+
                                   <h2 class="name">{{ $product->name }} </h2>
                                   <div class="price-rating">
                                       <h3 class="theme-color price">{{ $product->mrp }} <del
@@ -226,15 +226,29 @@
                                       {{-- <a href="javascript:void(0);" wire:click.prevent="store({{ $product->id }},'{{ $product->name }}','{{ $product->price }}')"
                                       class="btn btn-primary">Add To Cart</a> --}}
 
-                                      <button wire:click.prevent="store({{ $product->id }},'{{ $product->name }}','{{ $product->price }}')"
-                                        class="btn btn-md bg-dark cart-button text-white w-100">Add To Cart</button>
+                                      <div>
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <button
+                                                      wire:click.prevent="AddToCart({{ $product->id }},'{{ $product->name }}','{{ $product->price }}')"
+                                                      class="btn btn-md bg-dark cart-button text-white w-100">Add To
+                                                      Cart</button>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <button
+                                                      wire:click.prevent="buy({{ $product->id }},'{{ $product->name }}','{{ $product->price }}')"
+                                                      class="btn btn-md bg-dark cart-button text-white w-100">Buy
+                                                      Now</button>
+                                              </div>
+                                          </div>
+                                      </div>
 
                                       {{-- <form class="theme-form theme-form-2 mega-form"
                                           wire:submit.prevent="addContact({{ $product->slug }})"> --}}
 
-                                          {{-- <input type="text" value="{{ $product->id }}" wire:model='product_id'>
+                                      {{-- <input type="text" value="{{ $product->id }}" wire:model='product_id'>
                                           <button type="submit" class="btn btn-primary">Add To Cart</button> --}}
-                                          {{-- <a href="#" class="btn btn-primary" type="button">Add</a> --}}
+                                      {{-- <a href="#" class="btn btn-primary" type="button">Add</a> --}}
                                       </form>
 
                                   </div>

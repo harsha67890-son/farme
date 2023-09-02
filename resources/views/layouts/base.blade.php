@@ -109,25 +109,7 @@
                                 </div>
                             </div>
 
-                            <div class="middle-box">
-                                <div class="center-box">
-                                    <div class="searchbar-box order-xl-1 d-none d-xl-block">
-                                        <input type="search" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="search for product, delivered to your door...">
-                                        <button class="btn search-button">
-                                            <i class="iconly-Search icli"></i>
-                                        </button>
-                                    </div>
-                                    <div class="location-box-2">
-                                        <button class="btn location-button" data-bs-toggle="modal"
-                                            data-bs-target="#locationModal">
-                                            <i class="iconly-Location icli"></i>
-                                            <span class="locat-name">Your Location</span>
-                                            <i class="fa-solid fa-angle-down down-arrow"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                            @livewire('header-search-component')
 
                             @if (Route::has('login'))
                                 @auth
@@ -300,56 +282,41 @@
                                         </li>
 
                                         <li class="onhover-dropdown">
-                                            <a href="cart.html" class="header-icon bag-icon">
-                                                <small class="badge-number">2</small>
+                                            @if (Cart::count()>0)
+                                            <a href="{{ route('cart') }}" class="header-icon bag-icon">
+                                                <small class="badge-number">{{ Cart::count() }}</small>
                                                 <i class="iconly-Bag-2 icli"></i>
                                             </a>
+                                            @endif
                                             <div class="onhover-div">
                                                 <ul class="cart-list">
+                                                    @foreach (Cart::content() as $item)
                                                     <li>
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="../assets/images/vegetable/product/1.png"
+                                                                <img src="{{ asset('/images/products') }}/{{ $item->model->image }}"
                                                                     class="blur-up lazyload" alt="">
                                                             </a>
 
                                                             <div class="drop-contain">
                                                                 <a href="product-left-thumbnail.html">
-                                                                    <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                                                                    <h5>{{ $item->model->name }}</h5>
                                                                 </a>
-                                                                <h6><span>1 x</span> $80.58</h6>
-                                                                <button class="close-button">
+                                                                <h6><span>{{ $item->qty }} x</span> {{ $item->model->price }}</h6>
+                                                                <button class="close-button" wire:click.prevent="destroy('{{ $item->rowId }}')">
                                                                     <i class="fa-solid fa-xmark"></i>
                                                                 </button>
                                                             </div>
                                                         </div>
                                                     </li>
+                                                    @endforeach
 
-                                                    <li>
-                                                        <div class="drop-cart">
-                                                            <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="../assets/images/vegetable/product/2.png"
-                                                                    class="blur-up lazyload" alt="">
-                                                            </a>
-
-                                                            <div class="drop-contain">
-                                                                <a href="product-left-thumbnail.html">
-                                                                    <h5>Peanut Butter Bite Premium Butter Cookies 600 g
-                                                                    </h5>
-                                                                </a>
-                                                                <h6><span>1 x</span> $25.68</h6>
-                                                                <button class="close-button">
-                                                                    <i class="fa-solid fa-xmark"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </li>
                                                 </ul>
 
 
                                                 <div class="price-box">
                                                     <h5>Price :</h5>
-                                                    <h4 class="theme-color fw-bold">$106.58</h4>
+                                                    <h4 class="theme-color fw-bold">${{ Cart::subtotal() }}</h4>
                                                 </div>
 
                                                 <div class="button-group">
@@ -1309,10 +1276,10 @@
     <script src="{{ asset('/assets/js/quantity.js') }}"></script>
 
     <!-- Timer Js -->
-    {{-- <script src="{{ asset('/assets/js/timer1.js') }}"></script>
+    <script src="{{ asset('/assets/js/timer1.js') }}"></script>
     <script src="{{ asset('/assets/js/timer2.js') }}"></script>
     <script src="{{ asset('/assets/js/timer3.js') }}"></script>
-    <script src="{{ asset('/assets/js/timer4.js') }}"></script> --}}
+    <script src="{{ asset('/assets/js/timer4.js') }}"></script>
 
     <!-- Fly Cart Js -->
     <script src="{{ asset('/assets/js/fly-cart.js') }}"></script>
@@ -1323,7 +1290,6 @@
 
     <!-- script js -->
     <script src="{{ asset('/assets/js/script.js') }}"></script>
-    <script src="{{ asset('/assets/js/app.js') }}"></script>
     @livewireScripts
 </body>
 
