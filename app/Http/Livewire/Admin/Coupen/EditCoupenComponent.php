@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class EditCoupenComponent extends Component
 {
-    public $title; 
+    public $type; 
     public $code;
     public $value;
     public $cart_value;
@@ -22,7 +22,7 @@ class EditCoupenComponent extends Component
        $coupen = Coupen::where('id',$coupen_slug)->first();
        $this->coupen_id = $coupen->id;
        $this->code  = $coupen->code ;
-       $this->title = $coupen->title;
+       $this->type = $coupen->type;
        $this->value = $coupen->value;
        $this->cart_value = $coupen->cart_value;  
    }
@@ -30,7 +30,7 @@ class EditCoupenComponent extends Component
    public function updateCoupen()
    {
        $coupen = Coupen::find($this->coupen_id);
-       $coupen->title = $this->title;
+       $coupen->type = $this->type;
        $coupen->code = $this->code;
        $coupen->value = $this->value;
        $coupen->cart_value = $this->cart_value;

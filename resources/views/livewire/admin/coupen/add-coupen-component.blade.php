@@ -53,10 +53,15 @@
                                             <div class="row">
                                                 <div class="mb-4 row align-items-center">
                                                     <label
-                                                        class="form-label-title col-lg-2 col-md-3 mb-0">Coupon
-                                                        Title</label>
+                                                        class="form-label-title col-lg-2 col-md-3 mb-0">Coupon Type</label>
                                                     <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" type="text" wire:model="title" >
+                                                        {{-- <input class="form-control" type="text" wire:model="title" > --}}
+                                                        <select class="form-select" wire:model="type"
+                                                            name="state">
+                                                            <option disabled>--Select--</option>
+                                                            <option>Percent</option>
+                                                            <option>Fixed</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 {{-- <div class="mb-4 row align-items-center">
@@ -112,7 +117,7 @@
 
                                                 <div class="mb-4 row align-items-center">
                                                     <label
-                                                        class="col-lg-2 col-md-3 col-form-label form-label-title">Quantity</label>
+                                                        class="col-lg-2 col-md-3 col-form-label form-label-title">Coupon Value</label>
                                                     <div class="col-md-9 col-lg-10">
                                                         <input class="form-control" type="number" wire:model="value">
                                                     </div>

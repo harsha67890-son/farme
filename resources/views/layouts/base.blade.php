@@ -273,9 +273,14 @@
                                             <i class="iconly-Swap icli"></i>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="compare.html" class="header-icon">
+                                            <small class="badge-number">{{ Cart::instance('saveForLater')->count() }}</small>
+                                            <i class="fa fa-save"></i>
+                                        </a>
+                                    </li>
                                     @livewire('wishlist-count-component')
                                     @livewire('cart-count-component')
-
                                     {{-- <li class="onhover-dropdown">
                                         <a href="javascript:void(0)" class="header-icon swap-icon">
                                             @if (Cart::instance('wishlist')->count() > 0)

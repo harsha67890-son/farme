@@ -7,18 +7,18 @@ use Livewire\Component;
 
 class AddCoupenComponent extends Component
 {
-    public $title,$slug, $code, $value, $cart_value;
+    public $type,$slug, $code, $value, $cart_value;
 
     public function store()
     {
         $coupens = new Coupen;
-        $coupens->title = $this->title;
+        $coupens->type = $this->type;
         // $coupens->slug = $this->slug;
         $coupens->code = $this->code;
         $coupens->value = $this->value;
         $coupens->cart_value = $this->cart_value;
         $coupens->save();
-        $this->title = '';
+        $this->type = '';
         $this->code = '';
         $this->value = '';
         $this->cart_value = '';
@@ -32,7 +32,7 @@ class AddCoupenComponent extends Component
 
     // public function generateslug()
     // {
-    //  $this->slug = Str::slug($this->title,'-');
+    //  $this->slug = Str::slug($this->type,'-');
     // }
  
 

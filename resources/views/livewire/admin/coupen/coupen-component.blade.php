@@ -4,7 +4,7 @@
             <div class="col-sm-12">
                 <div class="card card-table">
                     <div class="card-body">
-                        <div class="title-header option-title">
+                        <div class="type-header option-type">
                             <h5>Coupon List</h5>
                             <div class="right-options">
                                 <ul>
@@ -31,9 +31,9 @@
                                                         value="">
                                                 </span>
                                             </th>
-                                            <th>Title</th>
-                                            <th>Code</th>
-                                            <th>Value</th>
+                                            <th>Coupon Type</th>
+                                            <th> Coupon Code</th>
+                                            <th>Coupon Value</th>
                                             <th>Cart Value</th>
                                             <th>Action</th>
                                         </tr>
@@ -49,9 +49,13 @@
                                                             value="">
                                                     </span>
                                                 </td>
-                                                <td>{{ $coupen->title }}</td>
+                                                <td>{{ $coupen->type }}</td>
                                                 <td>{{ $coupen->code }}</td>
-                                                <td class="theme-color">{{ $coupen->value }}</td>
+                                                @if ($coupen->type == 'fixed')
+                                                    <td>₹ {{ $coupen->value }}</td>
+                                                @else
+                                                    <td>{{ $coupen->value }} %</td>
+                                                @endif
                                                 <td>{{ $coupen->cart_value }}</td>
                                                 {{-- <td><button type="button" class="btn btn-success"  wire:click="edit({{ $coupen->code }})">Edit</button> --}}
 
@@ -86,7 +90,7 @@
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header d-block text-center">
-                                                                            <h5 class="modal-title w-100"
+                                                                            <h5 class="modal-type w-100"
                                                                                 id="exampleModalLabel22">Are You Sure ?
                                                                             </h5>
                                                                             <button type="button" class="btn-close"
@@ -113,7 +117,7 @@
                                                                                 data-bs-target="#exampleModalToggle2"
                                                                                 data-bs-toggle="modal"
                                                                                 data-bs-dismiss="modal"
-                                                                                wire:click.prevent="deleteCoupen({{ $coupen->id}})">Yes</button>
+                                                                                wire:click.prevent="deleteCoupen({{ $coupen->id }})">Yes</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>

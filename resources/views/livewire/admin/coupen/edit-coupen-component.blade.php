@@ -48,9 +48,9 @@
                                                 <div class="mb-4 row align-items-center">
                                                     <label
                                                         class="form-label-title col-lg-2 col-md-3 mb-0">Coupon
-                                                        Title</label>
+                                                        type</label>
                                                     <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" type="text" wire:model="title">
+                                                        <input class="form-control" type="text" wire:model="type">
                                                     </div>
                                                 </div>
 

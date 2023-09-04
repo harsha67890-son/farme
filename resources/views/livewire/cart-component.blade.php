@@ -13,6 +13,7 @@
                                       </a>
                                   </li>
                                   <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                                  {{ Cart::instance('saveForLater')->count() }}
                               </ol>
                           </nav>
                       </div>
@@ -113,7 +114,7 @@
                                                           <div class="cart_qty">
                                                               <div class="input-group">
                                                                   <button class="btn qty-left-minus"
-                                                                  wire:click.prevent="decreaseQuentity('{{ $item->rowId }}')">
+                                                                      wire:click.prevent="decreaseQuentity('{{ $item->rowId }}')">
                                                                       <i class="fa fa-minus ms-0"
                                                                           aria-hidden="true"></i>
                                                                   </button>
@@ -136,10 +137,12 @@
 
                                                   <td class="save-remove">
                                                       <h4 class="table-title text-content">Action</h4>
-                                                      <a class="save notifi-wishlist" href="javascript:void(0)">Save for
+                                                      <a class="save notifi-wishlist" href="javascript:void(0)"
+                                                          wire:click.prevent="switchToSaveForLater('{{ $item->rowId }}')">Save
+                                                          for
                                                           later</a>
-                                                      <a class="remove close_button"
-                                                          href="javascript:void(0)" wire:click.prevent="destroy('{{ $item->rowId }}')">Remove</a>
+                                                      <a class="remove close_button" href="javascript:void(0)"
+                                                          wire:click.prevent="destroy('{{ $item->rowId }}')">Remove</a>
                                                   </td>
                                               </tr>
                                           @endforeach
@@ -152,67 +155,109 @@
                       </div>
                   </div>
 
-                  <div class="col-xxl-3">
-                      <div class="summery-box p-sticky">
-                          <div class="summery-header">
-                              <h3>Cart Total</h3>
-                          </div>
-
-                          <div class="summery-contain">
-                              <div class="coupon-cart">
-                                  <h6 class="text-content mb-2">Coupon Apply</h6>
-                                  <div class="mb-3 coupon-box input-group">
-                                      <input type="email" class="form-control" id="exampleFormControlInput1"
-                                          placeholder="Enter Coupon Code Here...">
-                                      <button class="btn-apply">Apply</button>
-                                  </div>
+                  {{-- @if (!Session::has('coupon')) --}}
+                      <div class="col-xxl-3">
+                          <div class="summery-box p-sticky">
+                              <div class="summery-header">
+                                  <h3>Cart Total</h3>
                               </div>
-                              <ul>
-                                  <li>
-                                      <h4>Subtotal</h4>
-                                      <h4 class="price">₹{{ Cart::instance('cart')->subtotal() }}</h4>
-                                  </li>
+                              @if (Session::has('coupon_message'))
+                                  <div class="alert alert-danger" role="danger">
+                                      {{ Session::get('coupon_message') }}</div>
+                              @endif
+                              <div class="summery-contain">
+                                  <form action="" wire:submit.prevent='applyCouponCode'>
+                                      <div class="coupon-cart">
+                                          <h6 class="text-content mb-2">Coupon Apply</h6>
+                                          <div class="mb-3 coupon-box input-group">
+                                              <input type="text" wire:model='couponCode' class="form-control"
+                                                  id="exampleFormControlInput1" placeholder="Enter Coupon Code Here...">
+                                              <button class="btn-apply">Apply</button>
+                                          </div>
+                                      </div>
+                                  </form>
+                                  <ul>
+                                      @if (Session::has('coupon'))
+                                          <li>
+                                              <h4>Subtotal With Discount</h4>
+                                              <h4 class="price">₹{{ $subtotalAfterDiscount }}</h4>
+                                          </li>
 
-                                  <li>
-                                      <h4>Tax</h4>
-                                      <h4 class="price">₹{{ Cart::instance('cart')->tax() }}</h4>
-                                  </li>
+                                          <li>
+                                              <h4>Tax ({{ config('cart.tax') }})%</h4>
+                                              <h4 class="price">₹{{ $taxAfterDiscount }}</h4>
+                                          </li>
 
-                                  <li>
-                                      <h4>Coupon Discount</h4>
-                                      <h4 class="price">(-) 0.00</h4>
-                                  </li>
+                                          <li>
+                                              <h4>Coupon Discount ({{ Session::get('coupon')['code']  }})</h4>
+                                              <h4 class="price">{{ $discount }}</h4>
+                                          </li>
 
-                                  <li class="align-items-start">
-                                      <h4>Shipping</h4>
-                                      <h4 class="price text-end">₹6.90</h4>
+                                          <li class="align-items-start">
+                                              <h4>Shipping</h4>
+                                              <h4 class="price text-end">₹6.90</h4>
+                                          </li>
+                                          {{-- <li class="list-total border-top-0">
+                                            <h4>Total (RS)</h4>
+                                            <h4 class="price theme-color">₹{{ $totalAfterDiscount }}</h4>
+                                        </li> --}}
+                                      @else
+                                          <li>
+                                              <h4>Subtotal</h4>
+                                              <h4 class="price">₹{{ Cart::instance('cart')->subtotal() }}</h4>
+                                          </li>
+
+                                          <li>
+                                              <h4>Tax</h4>
+                                              <h4 class="price">₹{{ Cart::instance('cart')->tax() }}</h4>
+                                          </li>
+
+                                          <li>
+                                              <h4>Coupon Discount</h4>
+                                              <h4 class="price">(-) {{ $discount }}</h4>
+                                          </li>
+
+                                          <li class="align-items-start">
+                                              <h4>Shipping</h4>
+                                              <h4 class="price text-end">₹6.90</h4>
+                                          </li>
+                                      @endif
+                                  </ul>
+                              </div>
+                              @if (Session::has('coupon'))
+                              <ul class="summery-total">
+                                  <li class="list-total border-top-0">
+                                      <h4>Total (RS)</h4>
+                                      <h4 class="price theme-color">₹{{ $totalAfterDiscount }}</h4>
                                   </li>
                               </ul>
-                          </div>
+                              @else
+                              <ul class="summery-total">
+                                <li class="list-total border-top-0">
+                                    <h4>Total (RS)</h4>
+                                    <h4 class="price theme-color">₹{{ Cart::instance('cart')->total() }}</h4>
+                                </li>
+                            </ul>
+                            @endif
 
-                          <ul class="summery-total">
-                              <li class="list-total border-top-0">
-                                  <h4>Total (RS)</h4>
-                                  <h4 class="price theme-color">₹{{ Cart::instance('cart')->total() }}</h4>
-                              </li>
-                          </ul>
+                              <div class="button-group cart-button">
+                                  <ul>
+                                      <li>
+                                          <button onclick="location.href = 'checkout.html';"
+                                              class="btn btn-animation proceed-btn fw-bold">Process To
+                                              Checkout</button>
+                                      </li>
 
-                          <div class="button-group cart-button">
-                              <ul>
-                                  <li>
-                                      <button onclick="location.href = 'checkout.html';"
-                                          class="btn btn-animation proceed-btn fw-bold">Process To Checkout</button>
-                                  </li>
-
-                                  <li>
-                                      <button onclick="location.href = 'index.html';"
-                                          class="btn btn-light shopping-button text-dark">
-                                          <i class="fa-solid fa-arrow-left-long"></i>Return To Shopping</button>
-                                  </li>
-                              </ul>
+                                      <li>
+                                          <button onclick="location.href = 'index.html';"
+                                              class="btn btn-light shopping-button text-dark">
+                                              <i class="fa-solid fa-arrow-left-long"></i>Return To Shopping</button>
+                                      </li>
+                                  </ul>
+                              </div>
                           </div>
                       </div>
-                  </div>
+                  {{-- @endif --}}
               </div>
           </div>
       </section>

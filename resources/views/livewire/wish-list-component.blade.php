@@ -35,7 +35,7 @@
                                 </a>
 
                                 <div class="product-header-top">
-                                    <button class="btn wishlist-button close_button">
+                                    <button class="btn wishlist-button close_button" wire:click.prevent="removeFormWishlist('{{ $item->model->id }}')">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                                     </button>
                                 </div>
@@ -54,12 +54,12 @@
                                 </h5>
 
                                 <div class="add-to-cart-box bg-white mt-2">
-                                    <button class="btn btn-add-cart addcart-button">Add
-                                        <span class="add-icon bg-light-gray">
+                                    <button class="btn btn-add-cart addcart-button" wire:click.prevent="moveProductFormWishlistToCart('{{ $item->rowId }}')">Move Add To Cart
+                                        {{-- <span class="add-icon bg-light-gray">
                                             <i class="fa-solid fa-plus"></i>
-                                        </span>
+                                        </span> --}}
                                     </button>
-                                    <div class="cart_qty qty-box">
+                                    {{-- <div class="cart_qty qty-box">
                                         <div class="input-group bg-white">
                                             <button type="button" class="qty-left-minus bg-gray" data-type="minus" data-field="">
                                                 <i class="fa fa-minus" aria-hidden="true"></i>
@@ -69,7 +69,7 @@
                                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                             </button>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
