@@ -49,7 +49,7 @@ class AddProductComponent extends Component
         $product->description = $this->description;
         $product->mrp = $this->mrp;
         $product->price = $this->price;
-        $product->SKU = $this->SKU;
+        $product->sku = $this->sku;
         $product->stock_status = $this->stock_status;
         $product->ingredients = $this->ingredients;
         $product->stock = $this->stock;

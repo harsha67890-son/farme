@@ -136,7 +136,7 @@
                                                     <label class="form-label-title col-sm-3 mb-0">SKU</label>
                                                     <div class="col-sm-9">
                                                         <input class="form-control" type="text" placeholder="SKU"
-                                                            wire:model='SKU'>
+                                                            wire:model='sku'>
                                                     </div>
                                                 </div>
 

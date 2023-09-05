@@ -57,8 +57,8 @@
 
                                                     <td>{{ $item->stock }}</td>
 
-                                                    <td class="td-price">{{ $item->price }}</td>
                                                     <td class="td-price">{{ $item->packsize->packsize }}</td>
+                                                    <td class="td-price">{{ $item->price }}</td>
 
                                                     <td class="status-danger">
                                                         <span>Pending</span>
