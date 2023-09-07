@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AddCoupenComponent extends Component
 {
-    public $type,$slug, $code, $value, $cart_value;
+    public $type,$slug, $code, $value, $cart_value,$expiry_date;
 
     public function store()
     {
@@ -16,25 +16,17 @@ class AddCoupenComponent extends Component
         // $coupens->slug = $this->slug;
         $coupens->code = $this->code;
         $coupens->value = $this->value;
+        $coupens->expiry_date = $this->expiry_date;
         $coupens->cart_value = $this->cart_value;
         $coupens->save();
         $this->type = '';
         $this->code = '';
         $this->value = '';
         $this->cart_value = '';
+        $this->expiry_date = '';
         session()->flash('message','coupen added successfully..');
-
-        // $this->resetInputFields();
-        // $this->emit('userStore');
-    
     
     }
-
-    // public function generateslug()
-    // {
-    //  $this->slug = Str::slug($this->type,'-');
-    // }
- 
 
     public function render()
     {

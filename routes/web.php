@@ -4,9 +4,11 @@ use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\WishListComponent;
 use App\Http\Livewire\WishlistCountComponent;
 use App\Http\Livewire\Admin\Brand\BrandComponent;
+use App\Http\Livewire\Admin\Order\OrderComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\Coupen\CoupenComponent;
 use App\Http\Livewire\Admin\Slider\SliderComponent;
@@ -21,6 +23,7 @@ use App\Http\Livewire\Admin\Category\CategoryComponent;
 use App\Http\Livewire\Admin\Coupen\EditCoupenComponent;
 use App\Http\Livewire\Admin\Packsize\PackSizeComponent;
 use App\Http\Livewire\Admin\Slider\EditSliderComponent;
+use App\Http\Livewire\Admin\Order\OrderDetailsComponent;
 use App\Http\Livewire\Admin\Products\AddProductComponent;
 use App\Http\Livewire\Admin\Category\AddcategoryComponent;
 use App\Http\Livewire\Admin\Packsize\AddPackSizeComponent;
@@ -57,6 +60,10 @@ Route::get('/wishlist',WishListComponent::class)->name('wishlist');
 Route::get('/category/{category_slug}',CategoryProduct::class)->name('user.category');
 
 Route::get('/product-view/{slug}',ProductViewComponent::class)->name('product_view');
+
+Route::get('/checkout',CheckoutComponent::class)->name('checkout');
+
+// Route::get('/order',OrderComponent::class)->name('order');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {
@@ -104,6 +111,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/admin-user/slider', SliderComponent::class)->name('admin.slider');
     Route::get('/admin-user/add-slider', AddSliderComponent::class)->name('admin.slider.add');
     Route::get('/admin-user/edit-slider/{slider_slug}', EditSliderComponent::class)->name('admin.slider.edit');
+
+    // Order
+    Route::get('/admin-user/order',OrderComponent::class)->name('admin.order');
+    Route::get('/admin-user/order-detail/{order_id}',OrderDetailsComponent::class)->name('admin.orderDetails');
 });
 
 //For Super Admin

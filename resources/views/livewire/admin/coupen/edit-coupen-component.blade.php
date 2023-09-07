@@ -112,33 +112,15 @@
                                                         <input class="form-control" type="number" wire:model="cart_value">
                                                     </div>
                                                 </div>
-                                                {{-- <div class="mb-4 row align-items-center">
+                                               
+                                                <div class="mb-4 row align-items-center">
                                                     <label
-                                                        class="col-sm-2 col-form-label form-label-title">Discount
-                                                        Type</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="js-example-basic-single"
-                                                            name="state">
-                                                            <option disabled>--Select--</option>
-                                                            <option>Percent</option>
-                                                            <option>Fixed</option>
-                                                        </select>
+                                                        class="col-lg-2 col-md-3 col-form-label form-label-title">Expiry Date</label>
+                                                    <div class="col-md-9 col-lg-10">
+                                                        <input class="form-control" type="date" wire:model="expiry_date">
                                                     </div>
-                                                </div> --}}
-
-                                                {{-- <div class="row align-items-center">
-                                                    <label
-                                                        class="form-label-title col-lg-2 col-md-3 mb-0">Status</label>
-                                                    <div class="col-md-9">
-                                                        <div class="form-check user-checkbox ps-0">
-                                                            <input class="checkbox_animated check-it"
-                                                                type="checkbox" value=""
-                                                                id="flexCheckDefault1">
-                                                            <label class="form-label-title col-md-2 mb-0">
-                                                                Enable the Coupon</label>
-                                                        </div>
-                                                    </div>
-                                                </div> --}}
+                                                </div>
+                                               
 
                                                 <div class="mb-12 row align-items-center">
                                                     <label

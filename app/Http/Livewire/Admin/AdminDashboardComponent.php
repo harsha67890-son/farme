@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Product;
 use Livewire\Component;
 
 class AdminDashboardComponent extends Component

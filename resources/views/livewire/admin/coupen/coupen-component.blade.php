@@ -35,6 +35,7 @@
                                             <th> Coupon Code</th>
                                             <th>Coupon Value</th>
                                             <th>Cart Value</th>
+                                            <th>Expiry Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -57,6 +58,8 @@
                                                     <td>{{ $coupen->value }} %</td>
                                                 @endif
                                                 <td>{{ $coupen->cart_value }}</td>
+                                                <td>{{ date('d/m/Y / h:i A', strtotime($coupen->expiry_date))}}</td>
+                                                
                                                 {{-- <td><button type="button" class="btn btn-success"  wire:click="edit({{ $coupen->code }})">Edit</button> --}}
 
 

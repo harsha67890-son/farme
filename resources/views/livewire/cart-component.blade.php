@@ -159,7 +159,7 @@
                       <div class="col-xxl-3">
                           <div class="summery-box p-sticky">
                               <div class="summery-header">
-                                  <h3>Cart Total</h3>
+                                  <h3>Cart Total / Coupon Apply</h3>
                               </div>
                               @if (Session::has('coupon_message'))
                                   <div class="alert alert-danger" role="danger">
@@ -168,7 +168,7 @@
                               <div class="summery-contain">
                                   <form action="" wire:submit.prevent='applyCouponCode'>
                                       <div class="coupon-cart">
-                                          <h6 class="text-content mb-2">Coupon Apply</h6>
+                                          {{-- <h6 class="text-content mb-2">Coupon Apply</h6> --}}
                                           <div class="mb-3 coupon-box input-group">
                                               <input type="text" wire:model='couponCode' class="form-control"
                                                   id="exampleFormControlInput1" placeholder="Enter Coupon Code Here...">
@@ -243,7 +243,7 @@
                               <div class="button-group cart-button">
                                   <ul>
                                       <li>
-                                          <button onclick="location.href = 'checkout.html';"
+                                          <button onclick="location.href = '#';" wire:click.prevent="checkout"
                                               class="btn btn-animation proceed-btn fw-bold">Process To
                                               Checkout</button>
                                       </li>

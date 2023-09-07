@@ -11,7 +11,8 @@ class EditCoupenComponent extends Component
     public $code;
     public $value;
     public $cart_value;
-    // public $id;
+    public $expiry_date;
+
     public $coupen_id;
   
 
@@ -24,6 +25,7 @@ class EditCoupenComponent extends Component
        $this->code  = $coupen->code ;
        $this->type = $coupen->type;
        $this->value = $coupen->value;
+       $this->expiry_date = $coupen->expiry_date;
        $this->cart_value = $coupen->cart_value;  
    }
   
@@ -34,6 +36,7 @@ class EditCoupenComponent extends Component
        $coupen->code = $this->code;
        $coupen->value = $this->value;
        $coupen->cart_value = $this->cart_value;
+       $coupen->expiry_date = $this->expiry_date;
        $coupen->save();
        session()->flash('message','Coupen has been updated successfully!');
    }
