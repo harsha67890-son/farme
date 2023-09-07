@@ -19,17 +19,20 @@
                                             <li><a href="#"><i class="ri-delete-bin-line"></i></a></li>
                                         </ul>
                                     </div> --}}
+
                                     <div class="right-options ms-auto">
                                         <ul>
-                                            <li>
-                                                {{-- @if ($topProduct) --}}
-                                                {{-- <a class="btn btn-solid"  wire:model='addTopProduct()'
+
+                                            {{-- @if ($topProduct) --}}
+                                            {{-- <a class="btn btn-solid"  wire:model='addTopProduct()'
                                                 >Add
                                                 Top Products ({{ count($topProduct) }})</a> --}}
-                                                <button wire:click='addTopProduct' class="btn btn-solid">Add
-                                                    Top Products </button>
-                                                {{-- @endif --}}
-                                            </li>
+                                            <button wire:click='addSelectProduct' class="btn btn-solid">Add
+                                                Select Products </button>
+                                            <button wire:click='addTopProduct' class="btn btn-solid">Add
+                                                Top Products </button>
+                                            {{-- @endif --}}
+
                                         </ul>
                                     </div>
                                 </div>
@@ -39,7 +42,7 @@
                                 @endif
 
                                 <style>
-                                    .top_product{ 
+                                    .top_product {
                                         background-color: rgba(82, 168, 70, 0.781);
                                         color: #ffffff;
                                         font-weight: 300;
@@ -50,9 +53,10 @@
                                         margin-bottom: .5rem;
                                         border-radius: .3rem;
                                         margin-top: 12px;
-                                        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;  
+                                        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
                                     }
-                                    .top_product1{
+
+                                    .top_product1 {
                                         background-color: rgba(255, 40, 40, 0.757);
                                         color: #ffffff;
                                         font-weight: 300;
@@ -63,7 +67,7 @@
                                         margin-bottom: .5rem;
                                         border-radius: .3rem;
                                         margin-top: 12px;
-                                        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;  
+                                        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
                                     }
                                 </style>
                                 <div
@@ -73,19 +77,33 @@
                                             <div>
                                                 @if ($item->top_product < 1)
                                                     <input type="checkbox" id="" value="{{ $item->slug }}"
-                                                        wire:model='topProduct' /> <span class="top_product">Top Product</span>
-                                               @else
+                                                        wire:model='topProduct' /> <span class="top_product">Top
+                                                        Product</span>
+                                                @else
                                                     <input type="checkbox" id="" value="{{ $item->slug }}"
-                                                        wire:model='topProduct1' /> <span class="top_product1"> Remove Top Product</span>
+                                                        wire:model='topProduct1' /> <span class="top_product1"> Remove
+                                                        Top Product</span>
                                                 @endif
 
 
                                                 {{-- {{ $item->top_product }} --}}
                                                 <label for="{{ $item->top_product }}">
                                                     <div>
-                                                        <img src="{{ asset('images/products/') }}/{{ $item->image }}"
-                                                            class="img-fluid " alt="">
+                                                        @if ($item->select_product < 1)
+                                                            <input type="checkbox" id="" 
+                                                                value="{{ $item->slug }}"
+                                                                wire:model='selectProduct' /> <span class="select_product"><strong style="color: black">select</strong></span>
+                                                            <img src="{{ asset('images/products/') }}/{{ $item->image }}"
+                                                                class="img-fluid " alt="">
+                                                        @else
+                                                            <input type="checkbox" id=""
+                                                                value="{{ $item->slug }}"
+                                                                wire:model='selectProduct1' /> <span class="select_product1"><strong style="color: red">not selected</strong></span>
+                                                            <img src="{{ asset('images/products/') }}/{{ $item->image }}"
+                                                                class="img-fluid " alt="">
+                                                        @endif
                                                     </div>
+                                                    
                                                     <div>
                                                         <span>{{ $item->name }}</span>
                                                     </div>
@@ -93,6 +111,7 @@
                                             </div>
                                         </div>
                                     @endforeach
+
                                     {{-- <div>
                                         <div class="library-box">
                                             <input type="checkbox" id="myCheckbox2" />

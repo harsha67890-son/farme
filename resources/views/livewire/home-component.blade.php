@@ -1,9 +1,19 @@
+
+<style>
+@media screen and (min-width:650px) {
+.desktop{
+    display: none;
+}
+}
+
+</style>
+
 <div id="main">
     <section class="home-section-2 home-section-small section-b-space">
         <div class="container-fluid-lg">
             @foreach ($sliders as $slide)
                 <div class="row g-4">
-                    <div class="col-xxl-6 col-md-8">
+                    <div class="col-xxl-6 col-md-8 d-md-block d-none">
                         <a href="{{ $slide->slider_link }}">
                             <div class="home-contain h-100">
                                 <img src="{{ asset('/images/slider') }}/{{ $slide->image }}"
@@ -25,6 +35,45 @@
                             </div>
                         </a>
                     </div>
+                   
+                        <div class="desktop">    
+                            <div class="col-xxl-6 col-md-8">    
+                            <div id="carouselExample" class="carousel slide" >
+                            <div class="carousel-inner"  style="width: 380px; height:200px;">
+                                <div class="carousel-item active">
+                                    <a href="{{ $slide->slider_link }}">
+                                        <img src="{{ asset('/images/slider') }}/{{ $slide->image }}"
+                                            class="d-block w-100" alt="...">
+                                    </a>
+                                </div>
+                                <div class="carousel-item">
+                                    <a href="{{ $slide->slider_link }}">
+                                        <img src="{{ asset('/images/slider/a') }}/{{ $slide->image }}"
+                                            class="d-block w-100" alt="...">
+                                    </a>
+                                </div>
+                                <div class="carousel-item">
+                                    <a href="{{ $slide->slider_link }}">
+                                        <img src="{{ asset('/images/slider/b') }}/{{ $slide->image }}"class="d-block w-100"
+                                            alt="...">
+                                    </a>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+
+
 
                     <div class="col-xxl-3 col-md-4 ratio_medium d-md-block d-none">
                         <div class="home-contain home-small h-100">
@@ -582,7 +631,8 @@
                                             <i class="iconly-Heart icli"></i>
                                         </button> --}}
                                             @if ($witems->contains($item->id))
-                                                <a href="#" class="btn p-0 wishlist btn-wishlist notifi-wishlist"
+                                                <a href="#"
+                                                    class="btn p-0 wishlist btn-wishlist notifi-wishlist"
                                                     wire:click.prevent="addToWishlist({{ $item->id }},'{{ $item->name }}','{{ $item->price }}')">
                                                     <i class="iconly-Heart icli" style='color: red'></i>
 
@@ -596,7 +646,8 @@
                                                     <i data-feather="heart"></i>
 
                                                 </a> --}}
-                                                <button class="btn p-0 wishlist btn-wishlist notifi-wishlist"  wire:click.prevent="addToWishlist({{ $item->id }},'{{ $item->name }}','{{ $item->price }}')">
+                                                <button class="btn p-0 wishlist btn-wishlist notifi-wishlist"
+                                                    wire:click.prevent="addToWishlist({{ $item->id }},'{{ $item->name }}','{{ $item->price }}')">
                                                     <i class="iconly-Heart icli"></i>
                                                 </button>
                                             @endif
@@ -2350,8 +2401,8 @@
                                                     <div class="qty-left-minus" data-type="minus" data-field="">
                                                         <i class="fa-solid fa-minus"></i>
                                                     </div>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                        name="quantity" value="0">
+                                                    <input class="form-control input-number qty-input"
+                                                        type="text" name="quantity" value="0">
                                                     <div class="qty-right-plus" data-type="plus" data-field="">
                                                         <i class="fa-solid fa-plus"></i>
                                                     </div>
@@ -6527,7 +6578,8 @@
                 <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
                     <div class="row g-8">
 
-                        @foreach ($top_products as $item)
+                        @foreach ($select_products as $item)
+                            {{-- @if ($select_products === '1') --}}
                             <div class="col-xxl-2 col-lg-3 col-md-4 col-6 wow fadeInUp">
                                 <div class="product-box-4">
                                     <div class="product-image">
@@ -6603,6 +6655,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- @endif --}}
                         @endforeach
                     </div>
                 </div>
@@ -12283,4 +12336,4 @@
         </div>
     </section>
 </div>
-    <!-- Newsletter Section End -->
+<!-- Newsletter Section End -->
