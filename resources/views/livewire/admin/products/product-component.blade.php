@@ -126,6 +126,7 @@
                                                     <tr>
                                                         <td>
                                                             <div class="table-image">
+                                                                <input type="checkbox" id="">
                                                                 <img src="{{ asset('/images/products') }}/{{ $item->image }}"
                                                                     class="img-fluid" alt="{{ $item->image }}">
                                                             </div>

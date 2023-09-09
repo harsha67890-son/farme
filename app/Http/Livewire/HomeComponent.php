@@ -17,6 +17,7 @@ class HomeComponent extends Component
         $this->emitTo('wishlist-count-component','refreshComponent');
         // $this->redirectRoute('product_view', $this->slug);
     }
+    
     public function render()
     {
         $sliders = Slider::all()->unique('slider_name'); 
@@ -24,8 +25,6 @@ class HomeComponent extends Component
         $top_products = Product::where('top_product','1')->get()->unique('name');
         // $select_products = Product::where('select_product','1')->get()->unique('name');
         $select_products = Product::where('select_product','1')->orderBy('updated_at', 'desc')->get()->unique('name');
-
-       
 
         $best_products = Product::where('best_product','1')->get()->unique('name');
         $categorys = Category::all();

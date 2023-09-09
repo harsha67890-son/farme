@@ -1,11 +1,9 @@
-
 <style>
-@media screen and (min-width:650px) {
-.desktop{
-    display: none;
-}
-}
-
+    @media screen and (min-width:650px) {
+        .desktop {
+            display: none;
+        }
+    }
 </style>
 
 <div id="main">
@@ -35,42 +33,42 @@
                             </div>
                         </a>
                     </div>
-                   
-                        <div class="desktop">    
-                            <div class="col-xxl-6 col-md-8">    
-                            <div id="carouselExample" class="carousel slide" >
-                            <div class="carousel-inner"  style="width: 380px; height:200px;">
-                                <div class="carousel-item active">
-                                    <a href="{{ $slide->slider_link }}">
-                                        <img src="{{ asset('/images/slider') }}/{{ $slide->image }}"
-                                            class="d-block w-100" alt="...">
-                                    </a>
+
+                    <div class="desktop">
+                        <div class="col-xxl-6 col-md-8">
+                            <div id="carouselExample" class="carousel slide">
+                                <div class="carousel-inner" style="width: 380px; height:200px;">
+                                    <div class="carousel-item active">
+                                        <a href="{{ $slide->slider_link }}">
+                                            <img src="{{ asset('/images/slider') }}/{{ $slide->image }}"
+                                                class="d-block w-100" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="{{ $slide->slider_link }}">
+                                            <img src="{{ asset('/images/slider/a') }}/{{ $slide->image }}"
+                                                class="d-block w-100" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="{{ $slide->slider_link }}">
+                                            <img src="{{ asset('/images/slider/b') }}/{{ $slide->image }}"class="d-block w-100"
+                                                alt="...">
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="carousel-item">
-                                    <a href="{{ $slide->slider_link }}">
-                                        <img src="{{ asset('/images/slider/a') }}/{{ $slide->image }}"
-                                            class="d-block w-100" alt="...">
-                                    </a>
-                                </div>
-                                <div class="carousel-item">
-                                    <a href="{{ $slide->slider_link }}">
-                                        <img src="{{ asset('/images/slider/b') }}/{{ $slide->image }}"class="d-block w-100"
-                                            alt="...">
-                                    </a>
-                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
                         </div>
-                    </div>
                     </div>
 
 
@@ -628,8 +626,8 @@
                                     <div class="product-image">
                                         <div class="label-flex">
                                             {{-- <button class="btn p-0 wishlist btn-wishlist notifi-wishlist">
-                                            <i class="iconly-Heart icli"></i>
-                                        </button> --}}
+                <i class="iconly-Heart icli"></i>
+            </button> --}}
                                             @if ($witems->contains($item->id))
                                                 <a href="#"
                                                     class="btn p-0 wishlist btn-wishlist notifi-wishlist"
@@ -638,14 +636,14 @@
 
                                                 </a>
                                                 {{-- <button class="btn p-0 wishlist btn-wishlist notifi-wishlist"  wire:click.prevent="addToWishlist({{ $item->id }},'{{ $item->name }}','{{ $item->price }}')">
-                                                    <i class='fa-solid fa-heart' style='color: red'></i>
-                                                </button> --}}
+                        <i class='fa-solid fa-heart' style='color: red'></i>
+                    </button> --}}
                                             @else
                                                 {{-- <a href="#"
-                                                    wire:click.prevent="addToWishlist({{ $item->id }},'{{ $item->name }}','{{ $item->price }}')">
-                                                    <i data-feather="heart"></i>
+                        wire:click.prevent="addToWishlist({{ $item->id }},'{{ $item->name }}','{{ $item->price }}')">
+                        <i data-feather="heart"></i>
 
-                                                </a> --}}
+                    </a> --}}
                                                 <button class="btn p-0 wishlist btn-wishlist notifi-wishlist"
                                                     wire:click.prevent="addToWishlist({{ $item->id }},'{{ $item->name }}','{{ $item->price }}')">
                                                     <i class="iconly-Heart icli"></i>
@@ -666,10 +664,10 @@
                                                 </a>
                                             </li>
                                             {{-- <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.html">
-                                                <i class="iconly-Swap icli"></i>
-                                            </a>
-                                        </li> --}}
+                <a href="compare.html">
+                    <i class="iconly-Swap icli"></i>
+                </a>
+            </li> --}}
                                         </ul>
                                     </div>
 
@@ -698,24 +696,24 @@
                                             ₹{{ $item->mrp }}<del>₹{{ $item->price }}</del>
                                         </h5>
                                         {{-- <div class="price-qty">
-                                        <div class="counter-number">
-                                            <div class="counter">
-                                                <div class="qty-left-minus" data-type="minus" data-field="">
-                                                    <i class="fa-solid fa-minus"></i>
-                                                </div>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                    name="quantity" value="0">
-                                                <div class="qty-right-plus" data-type="plus" data-field="">
-                                                    <i class="fa-solid fa-plus"></i>
-                                                </div>
-                                            </div>
-                                        </div>
+            <div class="counter-number">
+                <div class="counter">
+                    <div class="qty-left-minus" data-type="minus" data-field="">
+                        <i class="fa-solid fa-minus"></i>
+                    </div>
+                    <input class="form-control input-number qty-input" type="text"
+                        name="quantity" value="0">
+                    <div class="qty-right-plus" data-type="plus" data-field="">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+            </div>
 
-                                        <button class="buy-button buy-button-2 btn btn-cart" >
-                                            <i class="iconly-Buy icli text-white m-0"></i>
-                                        </button>
-                                       
-                                    </div> --}}
+            <button class="buy-button buy-button-2 btn btn-cart" >
+                <i class="iconly-Buy icli text-white m-0"></i>
+            </button>
+           
+        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -6589,11 +6587,10 @@
                                             </button>
                                         </div>
 
-                                        <a href="product-left-thumbnail.html">
+                                        <a href="{{ route('product_view', ['slug' => $item->slug]) }}">
                                             <img src="{{ asset('/images/products') }}/{{ $item->image }}"
                                                 class="img-fluid" alt="">
                                         </a>
-
                                         <ul class="option">
                                             <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                 title="Quick View">
@@ -9401,7 +9398,7 @@
                                             </button>
                                         </div>
 
-                                        <a href="product-left-thumbnail.html">
+                                        <a href="{{ route('product_view', ['slug' => $item->slug]) }}">
                                             <img src="{{ asset('/images/products') }}/{{ $item->image }}"
                                                 class="img-fluid" alt="">
                                         </a>
